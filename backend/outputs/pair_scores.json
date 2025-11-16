@@ -1,0 +1,3917 @@
+[
+  {
+    "file_a": "a1.txt",
+    "file_b": "a10.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a11.txt",
+    "lexical": 0.0884,
+    "semantic": 0.5731,
+    "stylometric": 0.6291,
+    "combined": 0.4119,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a12.txt",
+    "lexical": 0.112,
+    "semantic": 0.6741,
+    "stylometric": 0.6283,
+    "combined": 0.4705,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a13.txt",
+    "lexical": 0.8787,
+    "semantic": 0.9448,
+    "stylometric": 0.6537,
+    "combined": 0.878,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a14.txt",
+    "lexical": 0.1531,
+    "semantic": 0.6184,
+    "stylometric": 0.6265,
+    "combined": 0.4568,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a15.txt",
+    "lexical": 0.1299,
+    "semantic": 0.6304,
+    "stylometric": 0.6208,
+    "combined": 0.4538,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a16.txt",
+    "lexical": 0.9065,
+    "semantic": 0.9587,
+    "stylometric": 0.6346,
+    "combined": 0.8918,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a17.txt",
+    "lexical": 0.1448,
+    "semantic": 0.6824,
+    "stylometric": 0.6294,
+    "combined": 0.4863,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a18.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.1312,
+    "semantic": 0.6066,
+    "stylometric": 0.6241,
+    "combined": 0.4429,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a20.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1615,
+    "semantic": 0.6612,
+    "stylometric": 0.6323,
+    "combined": 0.482,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0851,
+    "semantic": 0.5748,
+    "stylometric": 0.6253,
+    "combined": 0.411,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.0994,
+    "semantic": 0.5514,
+    "stylometric": 0.6322,
+    "combined": 0.4053,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1553,
+    "semantic": 0.643,
+    "stylometric": 0.6262,
+    "combined": 0.4698,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6361,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1689,
+    "semantic": 0.7044,
+    "stylometric": 0.6256,
+    "combined": 0.5051,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1907,
+    "semantic": 0.6385,
+    "stylometric": 0.6353,
+    "combined": 0.4813,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6361,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.7423,
+    "semantic": 0.8711,
+    "stylometric": 0.6332,
+    "combined": 0.7903,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1217,
+    "semantic": 0.6463,
+    "stylometric": 0.6324,
+    "combined": 0.4606,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.8198,
+    "semantic": 0.8977,
+    "stylometric": 0.6444,
+    "combined": 0.8324,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1225,
+    "semantic": 0.6108,
+    "stylometric": 0.6237,
+    "combined": 0.4418,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1546,
+    "semantic": 0.6436,
+    "stylometric": 0.6287,
+    "combined": 0.4702,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a1.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0921,
+    "semantic": 0.5267,
+    "stylometric": 0.6227,
+    "combined": 0.389,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a11.txt",
+    "lexical": 0.0884,
+    "semantic": 0.5731,
+    "stylometric": 0.6291,
+    "combined": 0.4119,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a12.txt",
+    "lexical": 0.112,
+    "semantic": 0.6741,
+    "stylometric": 0.6283,
+    "combined": 0.4705,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a13.txt",
+    "lexical": 0.8787,
+    "semantic": 0.9448,
+    "stylometric": 0.6537,
+    "combined": 0.878,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a14.txt",
+    "lexical": 0.1531,
+    "semantic": 0.6184,
+    "stylometric": 0.6265,
+    "combined": 0.4568,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a15.txt",
+    "lexical": 0.1299,
+    "semantic": 0.6304,
+    "stylometric": 0.6208,
+    "combined": 0.4538,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a16.txt",
+    "lexical": 0.9065,
+    "semantic": 0.9587,
+    "stylometric": 0.6346,
+    "combined": 0.8918,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a17.txt",
+    "lexical": 0.1448,
+    "semantic": 0.6824,
+    "stylometric": 0.6294,
+    "combined": 0.4863,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a18.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.1312,
+    "semantic": 0.6066,
+    "stylometric": 0.6241,
+    "combined": 0.4429,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a20.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1615,
+    "semantic": 0.6612,
+    "stylometric": 0.6323,
+    "combined": 0.482,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0851,
+    "semantic": 0.5748,
+    "stylometric": 0.6253,
+    "combined": 0.411,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.0994,
+    "semantic": 0.5514,
+    "stylometric": 0.6322,
+    "combined": 0.4053,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1553,
+    "semantic": 0.643,
+    "stylometric": 0.6262,
+    "combined": 0.4698,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6361,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1689,
+    "semantic": 0.7044,
+    "stylometric": 0.6256,
+    "combined": 0.5051,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1907,
+    "semantic": 0.6385,
+    "stylometric": 0.6353,
+    "combined": 0.4813,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6361,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.7423,
+    "semantic": 0.8711,
+    "stylometric": 0.6332,
+    "combined": 0.7903,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1217,
+    "semantic": 0.6463,
+    "stylometric": 0.6324,
+    "combined": 0.4606,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.8198,
+    "semantic": 0.8977,
+    "stylometric": 0.6444,
+    "combined": 0.8324,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1225,
+    "semantic": 0.6108,
+    "stylometric": 0.6237,
+    "combined": 0.4418,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1546,
+    "semantic": 0.6436,
+    "stylometric": 0.6287,
+    "combined": 0.4702,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a10.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0921,
+    "semantic": 0.5267,
+    "stylometric": 0.6227,
+    "combined": 0.389,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a12.txt",
+    "lexical": 0.1172,
+    "semantic": 0.5044,
+    "stylometric": 0.6361,
+    "combined": 0.3886,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a13.txt",
+    "lexical": 0.0899,
+    "semantic": 0.5641,
+    "stylometric": 0.6257,
+    "combined": 0.4074,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a14.txt",
+    "lexical": 0.1212,
+    "semantic": 0.5881,
+    "stylometric": 0.6359,
+    "combined": 0.4319,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a15.txt",
+    "lexical": 0.1236,
+    "semantic": 0.4827,
+    "stylometric": 0.6431,
+    "combined": 0.3811,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a16.txt",
+    "lexical": 0.0911,
+    "semantic": 0.5764,
+    "stylometric": 0.6342,
+    "combined": 0.4152,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a17.txt",
+    "lexical": 0.1431,
+    "semantic": 0.534,
+    "stylometric": 0.6447,
+    "combined": 0.4138,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a18.txt",
+    "lexical": 0.0884,
+    "semantic": 0.5731,
+    "stylometric": 0.6291,
+    "combined": 0.4119,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.1637,
+    "semantic": 0.5988,
+    "stylometric": 0.6355,
+    "combined": 0.452,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.0904,
+    "semantic": 0.5711,
+    "stylometric": 0.6301,
+    "combined": 0.4117,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.0884,
+    "semantic": 0.5731,
+    "stylometric": 0.6291,
+    "combined": 0.4119,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1922,
+    "semantic": 0.4644,
+    "stylometric": 0.6357,
+    "combined": 0.3948,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.0904,
+    "semantic": 0.5711,
+    "stylometric": 0.6301,
+    "combined": 0.4117,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.1745,
+    "semantic": 0.6263,
+    "stylometric": 0.6357,
+    "combined": 0.4696,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.1601,
+    "semantic": 0.5212,
+    "stylometric": 0.6348,
+    "combined": 0.4119,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1225,
+    "semantic": 0.5168,
+    "stylometric": 0.6359,
+    "combined": 0.3966,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.0929,
+    "semantic": 0.5616,
+    "stylometric": 0.6273,
+    "combined": 0.4074,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1456,
+    "semantic": 0.54,
+    "stylometric": 0.6358,
+    "combined": 0.4164,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.0904,
+    "semantic": 0.5711,
+    "stylometric": 0.6301,
+    "combined": 0.4117,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.0758,
+    "semantic": 0.4877,
+    "stylometric": 0.6304,
+    "combined": 0.3649,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.0929,
+    "semantic": 0.5616,
+    "stylometric": 0.6273,
+    "combined": 0.4074,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.081,
+    "semantic": 0.5615,
+    "stylometric": 0.6352,
+    "combined": 0.4044,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.136,
+    "semantic": 0.5845,
+    "stylometric": 0.6356,
+    "combined": 0.4352,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.0892,
+    "semantic": 0.5388,
+    "stylometric": 0.6257,
+    "combined": 0.3945,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1438,
+    "semantic": 0.4921,
+    "stylometric": 0.6354,
+    "combined": 0.3917,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1186,
+    "semantic": 0.5485,
+    "stylometric": 0.6362,
+    "combined": 0.4112,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.0904,
+    "semantic": 0.5711,
+    "stylometric": 0.6301,
+    "combined": 0.4117,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a11.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1433,
+    "semantic": 0.5494,
+    "stylometric": 0.6351,
+    "combined": 0.4201,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a13.txt",
+    "lexical": 0.1184,
+    "semantic": 0.6946,
+    "stylometric": 0.6247,
+    "combined": 0.4825,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a14.txt",
+    "lexical": 0.1737,
+    "semantic": 0.6256,
+    "stylometric": 0.6359,
+    "combined": 0.469,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a15.txt",
+    "lexical": 0.1543,
+    "semantic": 0.5826,
+    "stylometric": 0.6349,
+    "combined": 0.4405,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a16.txt",
+    "lexical": 0.1131,
+    "semantic": 0.6829,
+    "stylometric": 0.6337,
+    "combined": 0.4761,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a17.txt",
+    "lexical": 0.1694,
+    "semantic": 0.6778,
+    "stylometric": 0.6361,
+    "combined": 0.4936,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a18.txt",
+    "lexical": 0.112,
+    "semantic": 0.6741,
+    "stylometric": 0.6283,
+    "combined": 0.4705,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.1585,
+    "semantic": 0.5948,
+    "stylometric": 0.6357,
+    "combined": 0.4482,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.1135,
+    "semantic": 0.6677,
+    "stylometric": 0.6294,
+    "combined": 0.468,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.112,
+    "semantic": 0.6741,
+    "stylometric": 0.6283,
+    "combined": 0.4705,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1143,
+    "semantic": 0.607,
+    "stylometric": 0.6354,
+    "combined": 0.4388,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.1135,
+    "semantic": 0.6677,
+    "stylometric": 0.6294,
+    "combined": 0.468,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.1058,
+    "semantic": 0.5375,
+    "stylometric": 0.6359,
+    "combined": 0.4012,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.104,
+    "semantic": 0.5328,
+    "stylometric": 0.6343,
+    "combined": 0.3979,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1495,
+    "semantic": 0.536,
+    "stylometric": 0.636,
+    "combined": 0.4157,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.1204,
+    "semantic": 0.6874,
+    "stylometric": 0.6264,
+    "combined": 0.4798,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1948,
+    "semantic": 0.682,
+    "stylometric": 0.6359,
+    "combined": 0.5046,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.1135,
+    "semantic": 0.6677,
+    "stylometric": 0.6294,
+    "combined": 0.468,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1136,
+    "semantic": 0.6102,
+    "stylometric": 0.6295,
+    "combined": 0.4393,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1204,
+    "semantic": 0.6874,
+    "stylometric": 0.6264,
+    "combined": 0.4798,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.0875,
+    "semantic": 0.6413,
+    "stylometric": 0.6435,
+    "combined": 0.4478,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.2099,
+    "semantic": 0.603,
+    "stylometric": 0.6354,
+    "combined": 0.4703,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1223,
+    "semantic": 0.723,
+    "stylometric": 0.6248,
+    "combined": 0.498,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1712,
+    "semantic": 0.5716,
+    "stylometric": 0.6356,
+    "combined": 0.4411,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1293,
+    "semantic": 0.5634,
+    "stylometric": 0.654,
+    "combined": 0.425,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1135,
+    "semantic": 0.6677,
+    "stylometric": 0.6294,
+    "combined": 0.468,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a12.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.16,
+    "semantic": 0.5908,
+    "stylometric": 0.6354,
+    "combined": 0.4467,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a14.txt",
+    "lexical": 0.1451,
+    "semantic": 0.6188,
+    "stylometric": 0.6226,
+    "combined": 0.4536,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a15.txt",
+    "lexical": 0.1347,
+    "semantic": 0.6496,
+    "stylometric": 0.616,
+    "combined": 0.4643,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a16.txt",
+    "lexical": 0.774,
+    "semantic": 0.8984,
+    "stylometric": 0.6328,
+    "combined": 0.815,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a17.txt",
+    "lexical": 0.1431,
+    "semantic": 0.6983,
+    "stylometric": 0.6261,
+    "combined": 0.4932,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a18.txt",
+    "lexical": 0.8787,
+    "semantic": 0.9448,
+    "stylometric": 0.6537,
+    "combined": 0.878,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.1383,
+    "semantic": 0.6028,
+    "stylometric": 0.6198,
+    "combined": 0.4428,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6356,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.8787,
+    "semantic": 0.9448,
+    "stylometric": 0.6537,
+    "combined": 0.878,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1657,
+    "semantic": 0.6821,
+    "stylometric": 0.6297,
+    "combined": 0.4935,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6356,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0893,
+    "semantic": 0.5815,
+    "stylometric": 0.6212,
+    "combined": 0.4152,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.1079,
+    "semantic": 0.5471,
+    "stylometric": 0.6298,
+    "combined": 0.4058,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1683,
+    "semantic": 0.6531,
+    "stylometric": 0.6222,
+    "combined": 0.4788,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.9749,
+    "semantic": 0.9958,
+    "stylometric": 0.6361,
+    "combined": 0.9345,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1614,
+    "semantic": 0.7152,
+    "stylometric": 0.6215,
+    "combined": 0.5073,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6356,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.206,
+    "semantic": 0.6534,
+    "stylometric": 0.6346,
+    "combined": 0.494,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.9749,
+    "semantic": 0.9958,
+    "stylometric": 0.6361,
+    "combined": 0.9345,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.8496,
+    "semantic": 0.9129,
+    "stylometric": 0.6309,
+    "combined": 0.8484,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1295,
+    "semantic": 0.6531,
+    "stylometric": 0.6297,
+    "combined": 0.4663,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.889,
+    "semantic": 0.9333,
+    "stylometric": 0.654,
+    "combined": 0.8759,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1349,
+    "semantic": 0.6195,
+    "stylometric": 0.6193,
+    "combined": 0.4499,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1572,
+    "semantic": 0.6147,
+    "stylometric": 0.6251,
+    "combined": 0.4561,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6356,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a13.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0998,
+    "semantic": 0.5542,
+    "stylometric": 0.6181,
+    "combined": 0.4047,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a15.txt",
+    "lexical": 0.2187,
+    "semantic": 0.5219,
+    "stylometric": 0.6354,
+    "combined": 0.4328,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a16.txt",
+    "lexical": 0.1467,
+    "semantic": 0.6249,
+    "stylometric": 0.6327,
+    "combined": 0.4587,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a17.txt",
+    "lexical": 0.1693,
+    "semantic": 0.5996,
+    "stylometric": 0.6359,
+    "combined": 0.4545,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a18.txt",
+    "lexical": 0.1531,
+    "semantic": 0.6184,
+    "stylometric": 0.6265,
+    "combined": 0.4568,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.3188,
+    "semantic": 0.6792,
+    "stylometric": 0.636,
+    "combined": 0.5466,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.1414,
+    "semantic": 0.6183,
+    "stylometric": 0.6277,
+    "combined": 0.4528,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.1531,
+    "semantic": 0.6184,
+    "stylometric": 0.6265,
+    "combined": 0.4568,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.143,
+    "semantic": 0.5506,
+    "stylometric": 0.6348,
+    "combined": 0.4206,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.1414,
+    "semantic": 0.6183,
+    "stylometric": 0.6277,
+    "combined": 0.4528,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.1477,
+    "semantic": 0.6041,
+    "stylometric": 0.6359,
+    "combined": 0.4491,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.1586,
+    "semantic": 0.6623,
+    "stylometric": 0.6343,
+    "combined": 0.4818,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1302,
+    "semantic": 0.5296,
+    "stylometric": 0.6361,
+    "combined": 0.4058,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.1315,
+    "semantic": 0.618,
+    "stylometric": 0.633,
+    "combined": 0.45,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.2586,
+    "semantic": 0.6143,
+    "stylometric": 0.6361,
+    "combined": 0.4931,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.1414,
+    "semantic": 0.6183,
+    "stylometric": 0.6277,
+    "combined": 0.4528,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1742,
+    "semantic": 0.6225,
+    "stylometric": 0.6286,
+    "combined": 0.4665,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1315,
+    "semantic": 0.618,
+    "stylometric": 0.633,
+    "combined": 0.45,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.0939,
+    "semantic": 0.6123,
+    "stylometric": 0.6428,
+    "combined": 0.4355,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1976,
+    "semantic": 0.687,
+    "stylometric": 0.6345,
+    "combined": 0.5078,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.164,
+    "semantic": 0.6402,
+    "stylometric": 0.6312,
+    "combined": 0.4722,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1861,
+    "semantic": 0.5717,
+    "stylometric": 0.6357,
+    "combined": 0.4463,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.17,
+    "semantic": 0.5384,
+    "stylometric": 0.6359,
+    "combined": 0.4241,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1414,
+    "semantic": 0.6183,
+    "stylometric": 0.6277,
+    "combined": 0.4528,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a14.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1864,
+    "semantic": 0.6545,
+    "stylometric": 0.6356,
+    "combined": 0.4878,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a16.txt",
+    "lexical": 0.1335,
+    "semantic": 0.6402,
+    "stylometric": 0.629,
+    "combined": 0.4612,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a17.txt",
+    "lexical": 0.2628,
+    "semantic": 0.6639,
+    "stylometric": 0.6344,
+    "combined": 0.5191,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a18.txt",
+    "lexical": 0.1299,
+    "semantic": 0.6304,
+    "stylometric": 0.6208,
+    "combined": 0.4538,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.2565,
+    "semantic": 0.6196,
+    "stylometric": 0.636,
+    "combined": 0.4949,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.1289,
+    "semantic": 0.6234,
+    "stylometric": 0.6223,
+    "combined": 0.4502,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.1299,
+    "semantic": 0.6304,
+    "stylometric": 0.6208,
+    "combined": 0.4538,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1783,
+    "semantic": 0.5912,
+    "stylometric": 0.6501,
+    "combined": 0.4556,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.1289,
+    "semantic": 0.6234,
+    "stylometric": 0.6223,
+    "combined": 0.4502,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.2356,
+    "semantic": 0.5573,
+    "stylometric": 0.6357,
+    "combined": 0.4565,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.091,
+    "semantic": 0.4908,
+    "stylometric": 0.6311,
+    "combined": 0.3719,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.262,
+    "semantic": 0.6616,
+    "stylometric": 0.6356,
+    "combined": 0.5178,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.1323,
+    "semantic": 0.6417,
+    "stylometric": 0.6182,
+    "combined": 0.4599,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.2726,
+    "semantic": 0.6335,
+    "stylometric": 0.6443,
+    "combined": 0.5088,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.1289,
+    "semantic": 0.6234,
+    "stylometric": 0.6223,
+    "combined": 0.4502,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1627,
+    "semantic": 0.6238,
+    "stylometric": 0.623,
+    "combined": 0.4623,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1323,
+    "semantic": 0.6417,
+    "stylometric": 0.6182,
+    "combined": 0.4599,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.1249,
+    "semantic": 0.6623,
+    "stylometric": 0.6312,
+    "combined": 0.4695,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.2169,
+    "semantic": 0.5842,
+    "stylometric": 0.6321,
+    "combined": 0.4628,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1209,
+    "semantic": 0.6394,
+    "stylometric": 0.616,
+    "combined": 0.4544,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.2113,
+    "semantic": 0.6084,
+    "stylometric": 0.636,
+    "combined": 0.4735,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.2189,
+    "semantic": 0.6246,
+    "stylometric": 0.6347,
+    "combined": 0.4841,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1289,
+    "semantic": 0.6234,
+    "stylometric": 0.6223,
+    "combined": 0.4502,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a15.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1241,
+    "semantic": 0.5466,
+    "stylometric": 0.6361,
+    "combined": 0.4121,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a17.txt",
+    "lexical": 0.1305,
+    "semantic": 0.6777,
+    "stylometric": 0.6344,
+    "combined": 0.4797,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a18.txt",
+    "lexical": 0.9065,
+    "semantic": 0.9587,
+    "stylometric": 0.6346,
+    "combined": 0.8918,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.1103,
+    "semantic": 0.6202,
+    "stylometric": 0.6398,
+    "combined": 0.4447,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.9251,
+    "semantic": 0.9621,
+    "stylometric": 0.635,
+    "combined": 0.9001,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.9065,
+    "semantic": 0.9587,
+    "stylometric": 0.6346,
+    "combined": 0.8918,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1624,
+    "semantic": 0.6622,
+    "stylometric": 0.6357,
+    "combined": 0.4833,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.9251,
+    "semantic": 0.9621,
+    "stylometric": 0.635,
+    "combined": 0.9001,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0915,
+    "semantic": 0.5909,
+    "stylometric": 0.6319,
+    "combined": 0.4222,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.1101,
+    "semantic": 0.5544,
+    "stylometric": 0.6353,
+    "combined": 0.411,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1562,
+    "semantic": 0.6253,
+    "stylometric": 0.6325,
+    "combined": 0.4622,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.7955,
+    "semantic": 0.9022,
+    "stylometric": 0.6337,
+    "combined": 0.8246,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1667,
+    "semantic": 0.6962,
+    "stylometric": 0.6322,
+    "combined": 0.5013,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.9251,
+    "semantic": 0.9621,
+    "stylometric": 0.635,
+    "combined": 0.9001,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.2166,
+    "semantic": 0.6583,
+    "stylometric": 0.6349,
+    "combined": 0.5002,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.7955,
+    "semantic": 0.9022,
+    "stylometric": 0.6337,
+    "combined": 0.8246,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.8474,
+    "semantic": 0.9176,
+    "stylometric": 0.636,
+    "combined": 0.8507,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1266,
+    "semantic": 0.6551,
+    "stylometric": 0.6356,
+    "combined": 0.4672,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.6956,
+    "semantic": 0.8427,
+    "stylometric": 0.6328,
+    "combined": 0.7597,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.117,
+    "semantic": 0.6081,
+    "stylometric": 0.6309,
+    "combined": 0.4396,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1556,
+    "semantic": 0.6405,
+    "stylometric": 0.6339,
+    "combined": 0.4698,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.9251,
+    "semantic": 0.9621,
+    "stylometric": 0.635,
+    "combined": 0.9001,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a16.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0837,
+    "semantic": 0.5356,
+    "stylometric": 0.6302,
+    "combined": 0.3916,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a18.txt",
+    "lexical": 0.1448,
+    "semantic": 0.6824,
+    "stylometric": 0.6294,
+    "combined": 0.4863,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.1818,
+    "semantic": 0.5246,
+    "stylometric": 0.6354,
+    "combined": 0.4213,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.1267,
+    "semantic": 0.6677,
+    "stylometric": 0.6304,
+    "combined": 0.4728,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.1448,
+    "semantic": 0.6824,
+    "stylometric": 0.6294,
+    "combined": 0.4863,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.202,
+    "semantic": 0.74,
+    "stylometric": 0.6358,
+    "combined": 0.536,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.1267,
+    "semantic": 0.6677,
+    "stylometric": 0.6304,
+    "combined": 0.4728,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.1035,
+    "semantic": 0.4937,
+    "stylometric": 0.6356,
+    "combined": 0.3784,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.0805,
+    "semantic": 0.5235,
+    "stylometric": 0.6351,
+    "combined": 0.3852,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.2626,
+    "semantic": 0.6584,
+    "stylometric": 0.6359,
+    "combined": 0.5165,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.1236,
+    "semantic": 0.6823,
+    "stylometric": 0.6276,
+    "combined": 0.4786,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.2359,
+    "semantic": 0.818,
+    "stylometric": 0.6357,
+    "combined": 0.5869,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.1267,
+    "semantic": 0.6677,
+    "stylometric": 0.6304,
+    "combined": 0.4728,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1104,
+    "semantic": 0.6569,
+    "stylometric": 0.6308,
+    "combined": 0.4617,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1236,
+    "semantic": 0.6823,
+    "stylometric": 0.6276,
+    "combined": 0.4786,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.1091,
+    "semantic": 0.6454,
+    "stylometric": 0.6354,
+    "combined": 0.4562,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.192,
+    "semantic": 0.5941,
+    "stylometric": 0.6356,
+    "combined": 0.4596,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1322,
+    "semantic": 0.6688,
+    "stylometric": 0.6261,
+    "combined": 0.4746,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.3805,
+    "semantic": 0.6791,
+    "stylometric": 0.6438,
+    "combined": 0.5693,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.2451,
+    "semantic": 0.6291,
+    "stylometric": 0.6361,
+    "combined": 0.4957,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1267,
+    "semantic": 0.6677,
+    "stylometric": 0.6304,
+    "combined": 0.4728,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a17.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1689,
+    "semantic": 0.5782,
+    "stylometric": 0.6349,
+    "combined": 0.4434,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a19.txt",
+    "lexical": 0.1312,
+    "semantic": 0.6066,
+    "stylometric": 0.6241,
+    "combined": 0.4429,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a20.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1615,
+    "semantic": 0.6612,
+    "stylometric": 0.6323,
+    "combined": 0.482,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0851,
+    "semantic": 0.5748,
+    "stylometric": 0.6253,
+    "combined": 0.411,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.0994,
+    "semantic": 0.5514,
+    "stylometric": 0.6322,
+    "combined": 0.4053,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1553,
+    "semantic": 0.643,
+    "stylometric": 0.6262,
+    "combined": 0.4698,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6361,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1689,
+    "semantic": 0.7044,
+    "stylometric": 0.6256,
+    "combined": 0.5051,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1907,
+    "semantic": 0.6385,
+    "stylometric": 0.6353,
+    "combined": 0.4813,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6361,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.7423,
+    "semantic": 0.8711,
+    "stylometric": 0.6332,
+    "combined": 0.7903,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1217,
+    "semantic": 0.6463,
+    "stylometric": 0.6324,
+    "combined": 0.4606,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.8198,
+    "semantic": 0.8977,
+    "stylometric": 0.6444,
+    "combined": 0.8324,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1225,
+    "semantic": 0.6108,
+    "stylometric": 0.6237,
+    "combined": 0.4418,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1546,
+    "semantic": 0.6436,
+    "stylometric": 0.6287,
+    "combined": 0.4702,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a18.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0921,
+    "semantic": 0.5267,
+    "stylometric": 0.6227,
+    "combined": 0.389,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a2.txt",
+    "lexical": 0.1073,
+    "semantic": 0.6021,
+    "stylometric": 0.6254,
+    "combined": 0.4324,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.1312,
+    "semantic": 0.6066,
+    "stylometric": 0.6241,
+    "combined": 0.4429,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1829,
+    "semantic": 0.492,
+    "stylometric": 0.6339,
+    "combined": 0.4051,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.1073,
+    "semantic": 0.6021,
+    "stylometric": 0.6254,
+    "combined": 0.4324,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.1484,
+    "semantic": 0.6302,
+    "stylometric": 0.6361,
+    "combined": 0.4624,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.1518,
+    "semantic": 0.6419,
+    "stylometric": 0.633,
+    "combined": 0.469,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1448,
+    "semantic": 0.5169,
+    "stylometric": 0.6361,
+    "combined": 0.4045,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.1118,
+    "semantic": 0.5971,
+    "stylometric": 0.6218,
+    "combined": 0.4309,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1989,
+    "semantic": 0.586,
+    "stylometric": 0.6361,
+    "combined": 0.458,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.1073,
+    "semantic": 0.6021,
+    "stylometric": 0.6254,
+    "combined": 0.4324,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1087,
+    "semantic": 0.5388,
+    "stylometric": 0.6262,
+    "combined": 0.4014,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1118,
+    "semantic": 0.5971,
+    "stylometric": 0.6218,
+    "combined": 0.4309,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.0865,
+    "semantic": 0.6489,
+    "stylometric": 0.633,
+    "combined": 0.4497,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.2606,
+    "semantic": 0.6981,
+    "stylometric": 0.6337,
+    "combined": 0.5353,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1566,
+    "semantic": 0.6269,
+    "stylometric": 0.6199,
+    "combined": 0.4612,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1854,
+    "semantic": 0.5901,
+    "stylometric": 0.6361,
+    "combined": 0.4554,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1592,
+    "semantic": 0.5418,
+    "stylometric": 0.6356,
+    "combined": 0.422,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1073,
+    "semantic": 0.6021,
+    "stylometric": 0.6254,
+    "combined": 0.4324,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a19.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.2117,
+    "semantic": 0.6263,
+    "stylometric": 0.6361,
+    "combined": 0.4827,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a20.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1593,
+    "semantic": 0.6594,
+    "stylometric": 0.633,
+    "combined": 0.4804,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a22.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0857,
+    "semantic": 0.5743,
+    "stylometric": 0.6265,
+    "combined": 0.4111,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.0987,
+    "semantic": 0.5481,
+    "stylometric": 0.6329,
+    "combined": 0.4035,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1499,
+    "semantic": 0.6322,
+    "stylometric": 0.6274,
+    "combined": 0.4627,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.8788,
+    "semantic": 0.9448,
+    "stylometric": 0.6359,
+    "combined": 0.8754,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.167,
+    "semantic": 0.6894,
+    "stylometric": 0.6268,
+    "combined": 0.4972,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a28.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1918,
+    "semantic": 0.6386,
+    "stylometric": 0.6355,
+    "combined": 0.4817,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.8788,
+    "semantic": 0.9448,
+    "stylometric": 0.6359,
+    "combined": 0.8754,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.7631,
+    "semantic": 0.8749,
+    "stylometric": 0.6339,
+    "combined": 0.7996,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1177,
+    "semantic": 0.6412,
+    "stylometric": 0.6331,
+    "combined": 0.4567,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.7948,
+    "semantic": 0.8932,
+    "stylometric": 0.6356,
+    "combined": 0.8201,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1023,
+    "semantic": 0.5989,
+    "stylometric": 0.625,
+    "combined": 0.429,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1495,
+    "semantic": 0.6344,
+    "stylometric": 0.6297,
+    "combined": 0.464,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a8.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a2.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.079,
+    "semantic": 0.5263,
+    "stylometric": 0.624,
+    "combined": 0.3844,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a21.txt",
+    "lexical": 0.1615,
+    "semantic": 0.6612,
+    "stylometric": 0.6323,
+    "combined": 0.482,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0851,
+    "semantic": 0.5748,
+    "stylometric": 0.6253,
+    "combined": 0.411,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.0994,
+    "semantic": 0.5514,
+    "stylometric": 0.6322,
+    "combined": 0.4053,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1553,
+    "semantic": 0.643,
+    "stylometric": 0.6262,
+    "combined": 0.4698,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6361,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1689,
+    "semantic": 0.7044,
+    "stylometric": 0.6256,
+    "combined": 0.5051,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1907,
+    "semantic": 0.6385,
+    "stylometric": 0.6353,
+    "combined": 0.4813,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.8572,
+    "semantic": 0.941,
+    "stylometric": 0.6361,
+    "combined": 0.8659,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.7423,
+    "semantic": 0.8711,
+    "stylometric": 0.6332,
+    "combined": 0.7903,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1217,
+    "semantic": 0.6463,
+    "stylometric": 0.6324,
+    "combined": 0.4606,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.8198,
+    "semantic": 0.8977,
+    "stylometric": 0.6444,
+    "combined": 0.8324,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1225,
+    "semantic": 0.6108,
+    "stylometric": 0.6237,
+    "combined": 0.4418,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1546,
+    "semantic": 0.6436,
+    "stylometric": 0.6287,
+    "combined": 0.4702,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.9814,
+    "semantic": 0.9966,
+    "stylometric": 0.6361,
+    "combined": 0.9372,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a20.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0921,
+    "semantic": 0.5267,
+    "stylometric": 0.6227,
+    "combined": 0.389,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a22.txt",
+    "lexical": 0.1593,
+    "semantic": 0.6594,
+    "stylometric": 0.633,
+    "combined": 0.4804,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0974,
+    "semantic": 0.4419,
+    "stylometric": 0.6344,
+    "combined": 0.3502,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.1721,
+    "semantic": 0.4582,
+    "stylometric": 0.6355,
+    "combined": 0.3847,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.201,
+    "semantic": 0.5964,
+    "stylometric": 0.6347,
+    "combined": 0.4638,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.1632,
+    "semantic": 0.6797,
+    "stylometric": 0.6309,
+    "combined": 0.4916,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.2177,
+    "semantic": 0.72,
+    "stylometric": 0.6345,
+    "combined": 0.5314,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.1593,
+    "semantic": 0.6594,
+    "stylometric": 0.633,
+    "combined": 0.4804,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1537,
+    "semantic": 0.6124,
+    "stylometric": 0.633,
+    "combined": 0.4549,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1632,
+    "semantic": 0.6797,
+    "stylometric": 0.6309,
+    "combined": 0.4916,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.1403,
+    "semantic": 0.6368,
+    "stylometric": 0.6361,
+    "combined": 0.4629,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1604,
+    "semantic": 0.5929,
+    "stylometric": 0.6361,
+    "combined": 0.448,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1448,
+    "semantic": 0.6473,
+    "stylometric": 0.6297,
+    "combined": 0.4688,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1018,
+    "semantic": 0.5709,
+    "stylometric": 0.6336,
+    "combined": 0.4161,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1593,
+    "semantic": 0.6069,
+    "stylometric": 0.6356,
+    "combined": 0.4545,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1593,
+    "semantic": 0.6594,
+    "stylometric": 0.633,
+    "combined": 0.4804,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a21.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1143,
+    "semantic": 0.5433,
+    "stylometric": 0.6332,
+    "combined": 0.4066,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a23.txt",
+    "lexical": 0.0857,
+    "semantic": 0.5743,
+    "stylometric": 0.6265,
+    "combined": 0.4111,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.0987,
+    "semantic": 0.5481,
+    "stylometric": 0.6329,
+    "combined": 0.4035,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.1499,
+    "semantic": 0.6322,
+    "stylometric": 0.6274,
+    "combined": 0.4627,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.8788,
+    "semantic": 0.9448,
+    "stylometric": 0.6359,
+    "combined": 0.8754,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.167,
+    "semantic": 0.6894,
+    "stylometric": 0.6268,
+    "combined": 0.4972,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a28.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1918,
+    "semantic": 0.6386,
+    "stylometric": 0.6355,
+    "combined": 0.4817,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.8788,
+    "semantic": 0.9448,
+    "stylometric": 0.6359,
+    "combined": 0.8754,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.7631,
+    "semantic": 0.8749,
+    "stylometric": 0.6339,
+    "combined": 0.7996,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1177,
+    "semantic": 0.6412,
+    "stylometric": 0.6331,
+    "combined": 0.4567,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.7948,
+    "semantic": 0.8932,
+    "stylometric": 0.6356,
+    "combined": 0.8201,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1023,
+    "semantic": 0.5989,
+    "stylometric": 0.625,
+    "combined": 0.429,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1495,
+    "semantic": 0.6344,
+    "stylometric": 0.6297,
+    "combined": 0.464,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a8.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a22.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.079,
+    "semantic": 0.5263,
+    "stylometric": 0.624,
+    "combined": 0.3844,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a24.txt",
+    "lexical": 0.0677,
+    "semantic": 0.5032,
+    "stylometric": 0.6331,
+    "combined": 0.3702,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.0807,
+    "semantic": 0.5306,
+    "stylometric": 0.6361,
+    "combined": 0.389,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.0899,
+    "semantic": 0.5808,
+    "stylometric": 0.623,
+    "combined": 0.4153,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.123,
+    "semantic": 0.5669,
+    "stylometric": 0.6361,
+    "combined": 0.4219,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.0857,
+    "semantic": 0.5743,
+    "stylometric": 0.6265,
+    "combined": 0.4111,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1043,
+    "semantic": 0.5673,
+    "stylometric": 0.6268,
+    "combined": 0.4142,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.0899,
+    "semantic": 0.5808,
+    "stylometric": 0.623,
+    "combined": 0.4153,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.097,
+    "semantic": 0.6256,
+    "stylometric": 0.6336,
+    "combined": 0.4418,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.2256,
+    "semantic": 0.6822,
+    "stylometric": 0.6343,
+    "combined": 0.5152,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.0927,
+    "semantic": 0.584,
+    "stylometric": 0.6212,
+    "combined": 0.4177,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1874,
+    "semantic": 0.5551,
+    "stylometric": 0.6361,
+    "combined": 0.4385,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1087,
+    "semantic": 0.5519,
+    "stylometric": 0.6359,
+    "combined": 0.4093,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.0857,
+    "semantic": 0.5743,
+    "stylometric": 0.6265,
+    "combined": 0.4111,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a23.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1612,
+    "semantic": 0.5747,
+    "stylometric": 0.636,
+    "combined": 0.4392,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a25.txt",
+    "lexical": 0.0998,
+    "semantic": 0.4731,
+    "stylometric": 0.6338,
+    "combined": 0.3665,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.1067,
+    "semantic": 0.5429,
+    "stylometric": 0.631,
+    "combined": 0.4034,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.098,
+    "semantic": 0.5452,
+    "stylometric": 0.6421,
+    "combined": 0.4032,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.0987,
+    "semantic": 0.5481,
+    "stylometric": 0.6329,
+    "combined": 0.4035,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1103,
+    "semantic": 0.5413,
+    "stylometric": 0.6341,
+    "combined": 0.4044,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1067,
+    "semantic": 0.5429,
+    "stylometric": 0.631,
+    "combined": 0.4034,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.0976,
+    "semantic": 0.5669,
+    "stylometric": 0.6357,
+    "combined": 0.413,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.162,
+    "semantic": 0.609,
+    "stylometric": 0.635,
+    "combined": 0.4565,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1135,
+    "semantic": 0.5723,
+    "stylometric": 0.6298,
+    "combined": 0.4203,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.0762,
+    "semantic": 0.4895,
+    "stylometric": 0.6322,
+    "combined": 0.3663,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.0944,
+    "semantic": 0.4604,
+    "stylometric": 0.6345,
+    "combined": 0.3584,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.0987,
+    "semantic": 0.5481,
+    "stylometric": 0.6329,
+    "combined": 0.4035,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a24.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0964,
+    "semantic": 0.5651,
+    "stylometric": 0.6318,
+    "combined": 0.411,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a26.txt",
+    "lexical": 0.1601,
+    "semantic": 0.6413,
+    "stylometric": 0.6241,
+    "combined": 0.4703,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.2615,
+    "semantic": 0.6623,
+    "stylometric": 0.6362,
+    "combined": 0.5181,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.1499,
+    "semantic": 0.6322,
+    "stylometric": 0.6274,
+    "combined": 0.4627,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1305,
+    "semantic": 0.6023,
+    "stylometric": 0.6278,
+    "combined": 0.441,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1601,
+    "semantic": 0.6413,
+    "stylometric": 0.6241,
+    "combined": 0.4703,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.1647,
+    "semantic": 0.6423,
+    "stylometric": 0.634,
+    "combined": 0.4739,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1364,
+    "semantic": 0.5798,
+    "stylometric": 0.6346,
+    "combined": 0.4328,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1486,
+    "semantic": 0.6014,
+    "stylometric": 0.6223,
+    "combined": 0.446,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1564,
+    "semantic": 0.5677,
+    "stylometric": 0.636,
+    "combined": 0.434,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.2863,
+    "semantic": 0.6894,
+    "stylometric": 0.636,
+    "combined": 0.5403,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1499,
+    "semantic": 0.6322,
+    "stylometric": 0.6274,
+    "combined": 0.4627,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a25.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1321,
+    "semantic": 0.4722,
+    "stylometric": 0.6359,
+    "combined": 0.3777,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a27.txt",
+    "lexical": 0.1584,
+    "semantic": 0.6986,
+    "stylometric": 0.6234,
+    "combined": 0.4982,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.8788,
+    "semantic": 0.9448,
+    "stylometric": 0.6359,
+    "combined": 0.8754,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.2061,
+    "semantic": 0.6538,
+    "stylometric": 0.6351,
+    "combined": 0.4943,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a3.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.8739,
+    "semantic": 0.9171,
+    "stylometric": 0.632,
+    "combined": 0.8592,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1235,
+    "semantic": 0.6467,
+    "stylometric": 0.6309,
+    "combined": 0.4612,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.8597,
+    "semantic": 0.9284,
+    "stylometric": 0.6361,
+    "combined": 0.8605,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1112,
+    "semantic": 0.6067,
+    "stylometric": 0.6213,
+    "combined": 0.4355,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1503,
+    "semantic": 0.6044,
+    "stylometric": 0.6268,
+    "combined": 0.4488,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.8788,
+    "semantic": 0.9448,
+    "stylometric": 0.6359,
+    "combined": 0.8754,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a26.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0859,
+    "semantic": 0.5537,
+    "stylometric": 0.6202,
+    "combined": 0.3999,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a28.txt",
+    "lexical": 0.167,
+    "semantic": 0.6894,
+    "stylometric": 0.6268,
+    "combined": 0.4972,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1426,
+    "semantic": 0.654,
+    "stylometric": 0.6274,
+    "combined": 0.471,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.1584,
+    "semantic": 0.6986,
+    "stylometric": 0.6234,
+    "combined": 0.4982,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.1197,
+    "semantic": 0.6614,
+    "stylometric": 0.6338,
+    "combined": 0.4677,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1303,
+    "semantic": 0.6226,
+    "stylometric": 0.6343,
+    "combined": 0.4521,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1379,
+    "semantic": 0.6656,
+    "stylometric": 0.6215,
+    "combined": 0.4743,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1041,
+    "semantic": 0.6038,
+    "stylometric": 0.636,
+    "combined": 0.4337,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.204,
+    "semantic": 0.5941,
+    "stylometric": 0.6359,
+    "combined": 0.4638,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.167,
+    "semantic": 0.6894,
+    "stylometric": 0.6268,
+    "combined": 0.4972,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a27.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1301,
+    "semantic": 0.5834,
+    "stylometric": 0.6359,
+    "combined": 0.4326,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a29.txt",
+    "lexical": 0.1918,
+    "semantic": 0.6386,
+    "stylometric": 0.6355,
+    "combined": 0.4817,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.8788,
+    "semantic": 0.9448,
+    "stylometric": 0.6359,
+    "combined": 0.8754,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.7631,
+    "semantic": 0.8749,
+    "stylometric": 0.6339,
+    "combined": 0.7996,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1177,
+    "semantic": 0.6412,
+    "stylometric": 0.6331,
+    "combined": 0.4567,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.7948,
+    "semantic": 0.8932,
+    "stylometric": 0.6356,
+    "combined": 0.8201,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1023,
+    "semantic": 0.5989,
+    "stylometric": 0.625,
+    "combined": 0.429,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1495,
+    "semantic": 0.6344,
+    "stylometric": 0.6297,
+    "combined": 0.464,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a8.txt",
+    "lexical": 1.0,
+    "semantic": 1.0,
+    "stylometric": 1.0,
+    "combined": 1.0,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a28.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.079,
+    "semantic": 0.5263,
+    "stylometric": 0.624,
+    "combined": 0.3844,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a29.txt",
+    "file_b": "a3.txt",
+    "lexical": 0.2061,
+    "semantic": 0.6538,
+    "stylometric": 0.6351,
+    "combined": 0.4943,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a29.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.1944,
+    "semantic": 0.6266,
+    "stylometric": 0.634,
+    "combined": 0.4764,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a29.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1206,
+    "semantic": 0.6689,
+    "stylometric": 0.6326,
+    "combined": 0.4716,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a29.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.2065,
+    "semantic": 0.6763,
+    "stylometric": 0.6431,
+    "combined": 0.5069,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a29.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1402,
+    "semantic": 0.553,
+    "stylometric": 0.6252,
+    "combined": 0.4193,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a29.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1277,
+    "semantic": 0.62,
+    "stylometric": 0.6298,
+    "combined": 0.4492,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a29.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1918,
+    "semantic": 0.6386,
+    "stylometric": 0.6355,
+    "combined": 0.4817,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a29.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0928,
+    "semantic": 0.5576,
+    "stylometric": 0.6244,
+    "combined": 0.4049,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a3.txt",
+    "file_b": "a30.txt",
+    "lexical": 0.8739,
+    "semantic": 0.9171,
+    "stylometric": 0.632,
+    "combined": 0.8592,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a3.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.1235,
+    "semantic": 0.6467,
+    "stylometric": 0.6309,
+    "combined": 0.4612,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a3.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.8597,
+    "semantic": 0.9284,
+    "stylometric": 0.6361,
+    "combined": 0.8605,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a3.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1112,
+    "semantic": 0.6067,
+    "stylometric": 0.6213,
+    "combined": 0.4355,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a3.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1503,
+    "semantic": 0.6044,
+    "stylometric": 0.6268,
+    "combined": 0.4488,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a3.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.8788,
+    "semantic": 0.9448,
+    "stylometric": 0.6359,
+    "combined": 0.8754,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a3.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0859,
+    "semantic": 0.5537,
+    "stylometric": 0.6202,
+    "combined": 0.3999,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a30.txt",
+    "file_b": "a4.txt",
+    "lexical": 0.0996,
+    "semantic": 0.6375,
+    "stylometric": 0.636,
+    "combined": 0.449,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a30.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.7115,
+    "semantic": 0.8317,
+    "stylometric": 0.6395,
+    "combined": 0.7608,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a30.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.1277,
+    "semantic": 0.6195,
+    "stylometric": 0.6327,
+    "combined": 0.4494,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a30.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1538,
+    "semantic": 0.6261,
+    "stylometric": 0.6436,
+    "combined": 0.4634,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a30.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.7631,
+    "semantic": 0.8749,
+    "stylometric": 0.6339,
+    "combined": 0.7996,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a30.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.0831,
+    "semantic": 0.5301,
+    "stylometric": 0.6322,
+    "combined": 0.389,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a4.txt",
+    "file_b": "a5.txt",
+    "lexical": 0.1393,
+    "semantic": 0.6862,
+    "stylometric": 0.6298,
+    "combined": 0.4863,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a4.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.2153,
+    "semantic": 0.6394,
+    "stylometric": 0.6336,
+    "combined": 0.4901,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a4.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1847,
+    "semantic": 0.5986,
+    "stylometric": 0.6355,
+    "combined": 0.4593,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a4.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1177,
+    "semantic": 0.6412,
+    "stylometric": 0.6331,
+    "combined": 0.4567,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a4.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1844,
+    "semantic": 0.6204,
+    "stylometric": 0.6331,
+    "combined": 0.4697,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a5.txt",
+    "file_b": "a6.txt",
+    "lexical": 0.142,
+    "semantic": 0.6443,
+    "stylometric": 0.6194,
+    "combined": 0.4648,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a5.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.1422,
+    "semantic": 0.5938,
+    "stylometric": 0.6252,
+    "combined": 0.4405,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a5.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.7948,
+    "semantic": 0.8932,
+    "stylometric": 0.6356,
+    "combined": 0.8201,
+    "decision": "copied"
+  },
+  {
+    "file_a": "a5.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1071,
+    "semantic": 0.5328,
+    "stylometric": 0.6182,
+    "combined": 0.3966,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a6.txt",
+    "file_b": "a7.txt",
+    "lexical": 0.181,
+    "semantic": 0.5779,
+    "stylometric": 0.6355,
+    "combined": 0.4477,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a6.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1023,
+    "semantic": 0.5989,
+    "stylometric": 0.625,
+    "combined": 0.429,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a6.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1834,
+    "semantic": 0.5414,
+    "stylometric": 0.6362,
+    "combined": 0.4303,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a7.txt",
+    "file_b": "a8.txt",
+    "lexical": 0.1495,
+    "semantic": 0.6344,
+    "stylometric": 0.6297,
+    "combined": 0.464,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a7.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.1426,
+    "semantic": 0.4889,
+    "stylometric": 0.6353,
+    "combined": 0.3896,
+    "decision": "distinct"
+  },
+  {
+    "file_a": "a8.txt",
+    "file_b": "a9.txt",
+    "lexical": 0.079,
+    "semantic": 0.5263,
+    "stylometric": 0.624,
+    "combined": 0.3844,
+    "decision": "distinct"
+  }
+]
