@@ -1,16 +1,20 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import {
   uploadFiles,
+  uploadImages,
+  getOcrStatus,
   getFiles,
   clearFiles,
   detectSimilarity,
   comparePair,
+  comparePairDetailed,
   getVisualizationUrl,
 } from './api';
 
 function App() {
   const [files, setFiles] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [detectionResult, setDetectionResult] = useState(null);
@@ -19,11 +23,33 @@ function App() {
   const [comparisonResult, setComparisonResult] = useState(null);
   const [threshold, setThreshold] = useState(0.70);
   const [activeViz, setActiveViz] = useState('similarity_graph');
+  const [ocrAvailable, setOcrAvailable] = useState(false);
+  const [uploadMode, setUploadMode] = useState('text'); // 'text' or 'image'
+  
   const fileInputRef = useRef(null);
+  const imageInputRef = useRef(null);
+
+  // Check OCR availability on mount
+  useEffect(() => {
+    const checkOcr = async () => {
+      try {
+        const status = await getOcrStatus();
+        setOcrAvailable(status.available);
+      } catch (error) {
+        console.error('Failed to check OCR status:', error);
+      }
+    };
+    checkOcr();
+  }, []);
 
   const handleFileSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
     setFiles(selectedFiles);
+  };
+
+  const handleImageSelect = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+    setImageFiles(selectedFiles);
   };
 
   const handleUpload = async () => {
@@ -37,7 +63,6 @@ function App() {
       const result = await uploadFiles(files);
       alert(result.message);
       
-      // Fetch updated file list
       const fileList = await getFiles();
       setUploadedFiles(fileList.files);
       setFiles([]);
@@ -46,6 +71,43 @@ function App() {
       }
     } catch (error) {
       alert('Upload failed: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleImageUpload = async () => {
+    if (imageFiles.length < 1) {
+      alert('Please select at least 1 image');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const result = await uploadImages(imageFiles, true);
+      
+      let message = `✅ Successfully processed ${result.success_count} image(s)`;
+      if (result.error_count > 0) {
+        message += `\n⚠️ Failed: ${result.error_count} image(s)`;
+      }
+      
+      if (result.processed && result.processed.length > 0) {
+        const preview = result.processed[0];
+        message += `\n\n📝 Sample extracted text:\n"${preview.extracted_text_preview}"`;
+        message += `\n\n📊 Confidence: ${preview.confidence}%`;
+        message += `\n📄 Words: ${preview.statistics.words}`;
+      }
+      
+      alert(message);
+      
+      const fileList = await getFiles();
+      setUploadedFiles(fileList.files);
+      setImageFiles([]);
+      if (imageInputRef.current) {
+        imageInputRef.current.value = '';
+      }
+    } catch (error) {
+      alert('Image upload failed: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -103,13 +165,20 @@ function App() {
     setLoading(true);
     setComparisonResult(null);
     try {
-      const result = await comparePair(selectedFileA, selectedFileB);
+      const result = await comparePairDetailed(selectedFileA, selectedFileB);
       setComparisonResult(result);
     } catch (error) {
       alert('Comparison failed: ' + error.message);
     } finally {
       setLoading(false);
     }
+  };
+
+   const highlightContainerStyle = {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '1rem',
+    marginTop: '1rem'
   };
 
   const getVerdictColor = (verdict) => {
@@ -136,59 +205,120 @@ function App() {
     <div className="App">
       <header className="app-header">
         <h1>🔍 AEye - Document Similarity Detection</h1>
-        <p>Advanced plagiarism detection using lexical, semantic, and stylometric analysis</p>
+        <p>Advanced plagiarism detection with OCR support for handwritten documents</p>
       </header>
 
       <div className="container">
-        {/* Upload Section */}
+        {/* Upload Section with Tabs */}
         <section className="card">
           <h2>📤 Upload Documents</h2>
-          <div className="upload-area">
-            <input
-              ref={fileInputRef}
-              type="file"
-              multiple
-              accept=".txt,.md,.text,.log"
-              onChange={handleFileSelect}
-              className="file-input"
-            />
-            <div className="upload-info">
-              <p>{files.length > 0 ? `${files.length} file(s) selected` : 'No files selected'}</p>
-              {files.length > 0 && (
-                <ul className="file-list">
-                  {files.map((file, idx) => (
-                    <li key={idx}>{file.name} ({(file.size / 1024).toFixed(2)} KB)</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-            <div className="button-group">
+          
+          {/* Upload Mode Toggle */}
+          <div className="upload-mode-toggle">
+            <button
+              className={`mode-btn ${uploadMode === 'text' ? 'active' : ''}`}
+              onClick={() => setUploadMode('text')}
+            >
+              📄 Text Files
+            </button>
+            <button
+              className={`mode-btn ${uploadMode === 'image' ? 'active' : ''}`}
+              onClick={() => setUploadMode('image')}
+              disabled={!ocrAvailable}
+              title={!ocrAvailable ? 'OCR not available' : ''}
+            >
+              🖼️ Handwritten Images {!ocrAvailable && '(Unavailable)'}
+            </button>
+          </div>
+
+          {/* Text Upload */}
+          {uploadMode === 'text' && (
+            <div className="upload-area">
+              <input
+                ref={fileInputRef}
+                type="file"
+                multiple
+                accept=".txt,.md,.text,.log"
+                onChange={handleFileSelect}
+                className="file-input"
+              />
+              <div className="upload-info">
+                <p>{files.length > 0 ? `${files.length} file(s) selected` : 'No files selected'}</p>
+                {files.length > 0 && (
+                  <ul className="file-list">
+                    {files.map((file, idx) => (
+                      <li key={idx}>📄 {file.name} <span className="file-size">({(file.size / 1024).toFixed(2)} KB)</span></li>
+                    ))}
+                  </ul>
+                )}
+              </div>
               <button 
                 onClick={handleUpload} 
                 disabled={files.length < 2 || loading}
                 className="btn btn-primary"
               >
-                {loading ? '⏳ Uploading...' : '📤 Upload Files'}
+                {loading ? '⏳ Uploading...' : '📤 Upload Text Files'}
               </button>
-              {uploadedFiles.length > 0 && (
-                <button 
-                  onClick={handleClearFiles} 
-                  disabled={loading}
-                  className="btn btn-secondary"
-                >
-                  🗑️ Clear All
-                </button>
-              )}
             </div>
-          </div>
+          )}
 
+          {/* Image Upload */}
+          {uploadMode === 'image' && (
+            <div className="upload-area">
+              <input
+                ref={imageInputRef}
+                type="file"
+                multiple
+                accept=".jpg,.jpeg,.png,.bmp,.tiff,.gif"
+                onChange={handleImageSelect}
+                className="file-input"
+              />
+              <div className="upload-info">
+                <p>{imageFiles.length > 0 ? `${imageFiles.length} image(s) selected` : 'No images selected'}</p>
+                {imageFiles.length > 0 && (
+                  <ul className="file-list">
+                    {imageFiles.map((file, idx) => (
+                      <li key={idx}>🖼️ {file.name} <span className="file-size">({(file.size / 1024).toFixed(2)} KB)</span></li>
+                    ))}
+                  </ul>
+                )}
+                <div className="ocr-info">
+                  <p>ℹ️ Images will be processed with TrOCR to extract handwritten text</p>
+                  <p>✓ Line detection enabled for better accuracy</p>
+                  <p>✓ Supports: .jpg, .png, .bmp, .tiff, .gif</p>
+                </div>
+              </div>
+              <button 
+                onClick={handleImageUpload} 
+                disabled={imageFiles.length < 1 || loading}
+                className="btn btn-primary"
+              >
+                {loading ? '⏳ Processing OCR...' : '🤖 Extract Text from Images'}
+              </button>
+            </div>
+          )}
+
+          {/* Clear Files Button */}
+          {uploadedFiles.length > 0 && (
+            <div className="button-group" style={{marginTop: '1rem'}}>
+              <button 
+                onClick={handleClearFiles} 
+                disabled={loading}
+                className="btn btn-secondary"
+              >
+                🗑️ Clear All Files
+              </button>
+            </div>
+          )}
+
+          {/* Uploaded Files List */}
           {uploadedFiles.length > 0 && (
             <div className="uploaded-files">
               <h3>📁 Uploaded Files ({uploadedFiles.length})</h3>
               <div className="file-grid">
                 {uploadedFiles.map((file, idx) => (
                   <div key={idx} className="file-item">
-                    📄 {file.filename}
+                    📄 {file.filename} <span className="file-size">({file.size_kb} KB)</span>
                   </div>
                 ))}
               </div>
@@ -298,7 +428,23 @@ function App() {
             </div>
           </section>
         )}
-
+        {detectionResult && detectionResult.clusters_detail && detectionResult.clusters_detail.length > 0 && (
+          <section className="card">
+            <h2>🧩 Detected Clusters</h2>
+            <div className="clusters-list">
+              {detectionResult.clusters_detail.map((cluster) => (
+                <div key={cluster.id} className="cluster-item">
+                  <h3>Cluster #{cluster.id}</h3>
+                  <ul className="cluster-docs">
+                    {cluster.documents.map((doc) => (
+                      <li key={doc}>📄 {doc}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
         {/* Pairwise Comparison */}
         {detectionResult && (
           <section className="card">
@@ -357,7 +503,9 @@ function App() {
                   </h3>
                   <p>Confidence: <strong>{comparisonResult.confidence.toUpperCase()}</strong></p>
                 </div>
-
+                <div className="pair-description">
+                  <p>{comparisonResult.description}</p>
+                </div>
                 <div className="scores-grid">
                   <div className="score-card">
                     <h4>📝 Lexical</h4>
@@ -402,7 +550,7 @@ function App() {
                     <h4>🎯 Combined</h4>
                     <div 
                       className="score-value large"
-                      style={{ color: getScoreColor(comparisonResult.scores.combined) }}
+                      style={{ color: 'white' }}
                     >
                       {comparisonResult.scores.combined !== null 
                         ? comparisonResult.scores.combined.toFixed(3)
@@ -416,8 +564,52 @@ function App() {
                   <p>📄 Document A: <strong>{comparisonResult.details.sentences_a}</strong> sentences</p>
                   <p>📄 Document B: <strong>{comparisonResult.details.sentences_b}</strong> sentences</p>
                 </div>
+                {comparisonResult.highlights && (
+                  <>
+                    <h3>🔦 Similarity Highlights</h3>
+                    <p className="highlight-legend">
+                      Sentences matched semantically (≥ 0.80) are highlighted in blue. Shared high-impact words are highlighted in yellow.
+                    </p>
+                    <div style={highlightContainerStyle}>
+                      <div className="highlight-pane">
+                        <h4>Document A: {comparisonResult.file_a}</h4>
+                        <div
+                          className="highlight-html"
+                          dangerouslySetInnerHTML={{ __html: comparisonResult.highlights.html_a }}
+                        />
+                      </div>
+                      <div className="highlight-pane">
+                        <h4>Document B: {comparisonResult.file_b}</h4>
+                        <div
+                          className="highlight-html"
+                          dangerouslySetInnerHTML={{ __html: comparisonResult.highlights.html_b }}
+                        />
+                      </div>
+                    </div>
+                    {comparisonResult.highlights.meta &&
+                      comparisonResult.highlights.meta.high_sentence_pairs &&
+                      comparisonResult.highlights.meta.high_sentence_pairs.length > 0 && (
+                        <div className="matched-sentences">
+                          <h4>Matched Sentence Pairs (Top)</h4>
+                          <ul>
+                            {comparisonResult.highlights.meta.high_sentence_pairs.slice(0, 10).map((p, idx) => (
+                              <li key={idx}>
+                                <strong>A[{p.a_index}]</strong>: {p.a_text}
+                                <br />
+                                <strong>B[{p.b_index}]</strong>: {p.b_text}
+                                <br />
+                                <span className="pair-score">Sim: {p.score.toFixed(3)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )
+                    }
+                  </>
+                )}
               </div>
             )}
+              
           </section>
         )}
       </div>

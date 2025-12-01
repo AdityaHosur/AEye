@@ -58,6 +58,45 @@ body {
   font-size: 1.3rem;
 }
 
+/* Upload Mode Toggle */
+.upload-mode-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.mode-btn {
+  flex: 1;
+  max-width: 250px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-btn:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #667eea;
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+.mode-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
 /* Upload Section */
 .upload-area {
   border: 3px dashed #667eea;
@@ -98,6 +137,31 @@ body {
   padding: 0.5rem;
   border-bottom: 1px solid #eee;
   font-size: 0.9rem;
+}
+
+.file-list li:last-child {
+  border-bottom: none;
+}
+
+.file-size {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+/* OCR Info */
+.ocr-info {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #eff6ff;
+  border-left: 4px solid #667eea;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.ocr-info p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: #1e40af;
 }
 
 .button-group {
@@ -175,6 +239,7 @@ body {
   text-align: center;
   font-weight: 500;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
 }
 
 /* Detection Controls */
@@ -211,6 +276,15 @@ body {
   border-radius: 50%;
   background: #667eea;
   cursor: pointer;
+}
+
+.threshold-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #667eea;
+  cursor: pointer;
+  border: none;
 }
 
 /* Detection Summary */
@@ -434,10 +508,139 @@ body {
   color: #555;
 }
 
+
+/* ...existing styles... */
+
+/* Pair description */
+.pair-description {
+  margin: 0.75rem 0 1rem;
+  padding: 0.75rem 1rem;
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+/* Highlight panes */
+.highlight-pane h4 {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+}
+
+.highlight-html {
+  max-height: 400px;
+  overflow: auto;
+  padding: 0.75rem;
+  background: #0b1020;
+  border: 1px solid #1f2845;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.highlight-legend {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Highlight wrappers */
+.doc-highlight p {
+  margin: 0.25rem 0;
+}
+
+.doc-highlight p.hl-sent {
+  background: rgba(59,130,246,0.22);
+  border-left: 3px solid #3b82f6;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+}
+
+.doc-highlight .hl-word {
+  background: rgba(245,158,11,0.45);
+  padding: 0 2px;
+  border-radius: 3px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Matched sentences list */
+.matched-sentences {
+  margin-top: 1rem;
+  background: #0b1020;
+  border: 1px solid #1f2845;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+
+.matched-sentences h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+}
+
+.matched-sentences ul {
+  margin: 0;
+  padding-left: 1rem;
+  list-style: disc;
+}
+
+.matched-sentences li {
+  margin-bottom: 0.6rem;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+
+.matched-sentences .pair-score {
+  color: #60a5fa;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 0.15rem;
+}
+
+/* Verdict banner adjustments */
+.verdict-banner {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.verdict-banner h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+/* Ensure scrollbars consistent */
+.highlight-html::-webkit-scrollbar {
+  width: 8px;
+}
+.highlight-html::-webkit-scrollbar-track {
+  background: #0b1020;
+}
+.highlight-html::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+.highlight-html::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .app-header h1 {
     font-size: 2rem;
+  }
+
+  .upload-mode-toggle {
+    flex-direction: column;
+  }
+
+  .mode-btn {
+    max-width: 100%;
   }
 
   .comparison-controls {
@@ -455,5 +658,14 @@ body {
 
   .viz-iframe {
     height: 600px;
+  }
+
+  .viz-tabs {
+    justify-content: center;
+  }
+
+  .viz-tab {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
   }
 }

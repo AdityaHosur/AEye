@@ -2,73 +2,65 @@ const API_BASE_URL = 'http://localhost:8000';
 
 export const uploadFiles = async (files) => {
   const formData = new FormData();
-  files.forEach(file => {
-    formData.append('files', file);
-  });
+  files.forEach(f => formData.append('files', f));
+  const r = await fetch(`${API_BASE_URL}/upload`, { method: 'POST', body: formData });
+  if (!r.ok) throw new Error((await r.json()).detail || 'Upload failed');
+  return r.json();
+};
 
-  const response = await fetch(`${API_BASE_URL}/upload`, {
-    method: 'POST',
-    body: formData,
-  });
+export const uploadImages = async (files, splitLines = true) => {
+  const formData = new FormData();
+  files.forEach(f => formData.append('files', f));
+  formData.append('split_lines', String(splitLines));
+  const r = await fetch(`${API_BASE_URL}/upload-images`, { method: 'POST', body: formData });
+  if (!r.ok) throw new Error((await r.json()).detail || 'Image upload failed');
+  return r.json();
+};
 
-  if (!response.ok) {
-    throw new Error('Upload failed');
-  }
-
-  return response.json();
+export const getOcrStatus = async () => {
+  const r = await fetch(`${API_BASE_URL}/ocr-status`);
+  if (!r.ok) throw new Error('Failed OCR status');
+  return r.json();
 };
 
 export const getFiles = async () => {
-  const response = await fetch(`${API_BASE_URL}/files`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch files');
-  }
-  return response.json();
+  const r = await fetch(`${API_BASE_URL}/files`);
+  if (!r.ok) throw new Error('File list failed');
+  return r.json();
 };
 
 export const clearFiles = async () => {
-  const response = await fetch(`${API_BASE_URL}/files`, {
-    method: 'DELETE',
-  });
-  if (!response.ok) {
-    throw new Error('Failed to clear files');
-  }
-  return response.json();
+  const r = await fetch(`${API_BASE_URL}/files`, { method: 'DELETE' });
+  if (!r.ok) throw new Error('Clear failed');
+  return r.json();
 };
 
 export const detectSimilarity = async (threshold = 0.70) => {
-  const response = await fetch(`${API_BASE_URL}/detect-similarity?threshold=${threshold}`, {
-    method: 'POST',
-  });
-
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.detail || 'Detection failed');
-  }
-
-  return response.json();
+  const r = await fetch(`${API_BASE_URL}/detect-similarity?threshold=${threshold}`, { method: 'POST' });
+  if (!r.ok) throw new Error((await r.json()).detail || 'Detection failed');
+  return r.json();
 };
 
-export const comparePair = async (fileA, fileB) => {
-  const response = await fetch(`${API_BASE_URL}/compare-pair`, {
+export async function comparePair(fileA, fileB) {
+  const r = await fetch(`${API_BASE_URL}/compare-pair`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      file_a: String(fileA),
-      file_b: String(fileB),
-    }),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ file_a: fileA, file_b: fileB })
   });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
 
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.detail || 'Comparison failed');
-  }
+export async function comparePairDetailed(fileA, fileB) {
+  const r = await fetch(`${API_BASE_URL}/compare-pair-detailed`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ file_a: fileA, file_b: fileB })
+  });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
 
-  return response.json();
-};
-
-export const getVisualizationUrl = (path) => {
+export function getVisualizationUrl(path) {
   return `${API_BASE_URL}${path}`;
-};
+}

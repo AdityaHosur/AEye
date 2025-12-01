@@ -1,0 +1,54 @@
+{
+  "serial": {
+    "total_time": 19.70198130607605,
+    "avg_pair_time": 0.04528272563013537,
+    "workers": 1
+  },
+  "parallel": {
+    "2": {
+      "total_time": 16.981040000915527,
+      "avg_pair_time": 0.07790361985392955,
+      "workers": 2,
+      "speedup": 1.1602340790089314
+    },
+    "4": {
+      "total_time": 15.05904221534729,
+      "avg_pair_time": 0.13814464218315037,
+      "workers": 4,
+      "speedup": 1.30831569659835
+    },
+    "8": {
+      "total_time": 15.940067291259766,
+      "avg_pair_time": 0.2918248220421802,
+      "workers": 8,
+      "speedup": 1.2360036470410016
+    }
+  },
+  "parallel_batched": {
+    "2": {
+      "total_time": 0.7089159488677979,
+      "avg_pair_time": 2.8754924905711206e-05,
+      "workers": 2,
+      "speedup": 27.791702722363457
+    },
+    "4": {
+      "total_time": 0.6560041904449463,
+      "avg_pair_time": 0.00010173731836779364,
+      "workers": 4,
+      "speedup": 30.03331623950883
+    },
+    "8": {
+      "total_time": 0.6344766616821289,
+      "avg_pair_time": 5.951585440800108e-05,
+      "workers": 8,
+      "speedup": 31.052334145501934
+    }
+  },
+  "num_documents": 30,
+  "num_pairs": 435,
+  "execution_methods": [
+    "Serial",
+    "Parallel (No Lock)",
+    "Parallel (Batched)"
+  ]
+}

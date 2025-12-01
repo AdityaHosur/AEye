@@ -7,34 +7,19 @@ import argparse
 from typing import Dict, List, Tuple, Optional
 
 import numpy as np
+import networkx as nx
 
 warnings.filterwarnings("ignore", category=UserWarning)
-
-# Optional plotting deps (static)
-try:
-    import matplotlib.pyplot as plt
-    import matplotlib as mpl
-    _HAS_MPL = True
-except Exception:
-    _HAS_MPL = False
 
 # Optional interactive plotting deps
 try:
     import plotly.express as px
     import plotly.graph_objects as go
-    from plotly.subplots import make_subplots
     _HAS_PLOTLY = True
 except Exception:
     _HAS_PLOTLY = False
 
-# Optional convex hull (to draw cluster hulls)
-try:
-    from scipy.spatial import ConvexHull
-    _HAS_HULL = True
-except Exception:
-    _HAS_HULL = False
-
-# For 2D layout
+# For 2D layout fallbacks
 try:
     from sklearn.manifold import SpectralEmbedding, TSNE
     _HAS_SE = True
@@ -42,12 +27,10 @@ except Exception:
     _HAS_SE = False
 
 from sklearn.decomposition import PCA
-from sklearn.metrics import silhouette_score
-from sklearn.cluster import SpectralClustering, AgglomerativeClustering
 
 # Local models
 from models.lexical import sentence_tokenize as lex_sent_tokenize, compute_sentence_similarity as lex_pair_sim
-from models.semantic import sentence_tokenize as sem_sent_tokenize, embed_sentences
+from models.semantic import embed_sentences
 from models.style import stylometric_features, compare_stylometry
 
 
@@ -86,37 +69,32 @@ def combine_scores(scores: Dict[str, Optional[float]]) -> Tuple[float, Dict[str,
 
 
 def layout_2d_from_similarity(sim: np.ndarray, method: str = "spectral") -> np.ndarray:
-    """
-    Compute 2D layout from similarity matrix.
-    method: 'spectral', 'tsne', or 'pca'
-    """
     n = sim.shape[0]
     if n == 1:
         return np.zeros((1, 2), dtype=float)
-    
+
     A = np.array(sim, dtype=float)
     A[~np.isfinite(A)] = 0.0
     A = np.clip(A, 0.0, 1.0)
     A = 0.5 * (A + A.T)
     np.fill_diagonal(A, 0.0)
-    
+
     if method == "spectral" and _HAS_SE:
         try:
             emb = SpectralEmbedding(n_components=2, affinity="precomputed", random_state=42).fit_transform(A)
             return emb.astype(float)
         except Exception:
             pass
-    
+
     if method == "tsne" and _HAS_SE:
         try:
             D = 1.0 - A
             np.fill_diagonal(D, 0.0)
-            emb = TSNE(n_components=2, metric="precomputed", random_state=42, perplexity=min(30, n-1)).fit_transform(D)
+            emb = TSNE(n_components=2, metric="precomputed", random_state=42, perplexity=min(30, n - 1)).fit_transform(D)
             return emb.astype(float)
         except Exception:
             pass
-    
-    # Fallback: PCA on distance
+
     D = 1.0 - A
     np.fill_diagonal(D, 0.0)
     pca = PCA(n_components=2, random_state=42)
@@ -124,438 +102,336 @@ def layout_2d_from_similarity(sim: np.ndarray, method: str = "spectral") -> np.n
     return coords.astype(float)
 
 
-def cluster_from_similarity(sim: np.ndarray, k_min: int = 2, k_max: int = 10) -> Tuple[np.ndarray, int]:
-    """
-    Cluster docs from combined similarity so copied docs group together.
-    Picks k via best silhouette on precomputed distance (1 - sim).
-    """
+def cluster_from_similarity(
+    sim: np.ndarray,
+    threshold: float = 0.70,
+    k_min: int = 2,
+    k_max: int = 10,
+) -> Tuple[np.ndarray, int]:
     n = sim.shape[0]
-    if n <= 2:
-        return np.zeros(n, dtype=int), 1
-    
+    if n <= 1:
+        return np.full(n, -1, dtype=int), 0
+
     A = np.array(sim, dtype=float)
     A[~np.isfinite(A)] = 0.0
     A = np.clip(A, 0.0, 1.0)
     A = 0.5 * (A + A.T)
     np.fill_diagonal(A, 1.0)
-    D = 1.0 - A
-    np.fill_diagonal(D, 0.0)
 
-    k_min = max(2, k_min)
-    k_max = max(k_min, min(k_max, n - 1))
-
-    best_labels = None
-    best_score = -1.0
-    best_k = 1
-
-    # Try SpectralClustering across k
-    for k in range(k_min, k_max + 1):
-        try:
-            sc = SpectralClustering(
-                n_clusters=k,
-                affinity="precomputed",
-                assign_labels="kmeans",
-                random_state=42,
-            )
-            labels = sc.fit_predict(A)
-            if len(set(labels)) < 2:
-                continue
-            score = silhouette_score(D, labels, metric="precomputed")
-            if score > best_score:
-                best_score = score
-                best_labels = labels
-                best_k = k
-        except Exception:
-            continue
-
-    # Fallback: AgglomerativeClustering
-    if best_labels is None:
-        for k in range(k_min, k_max + 1):
-            try:
-                try:
-                    agg = AgglomerativeClustering(
-                        n_clusters=k, affinity="precomputed", linkage="average"
-                    )
-                except TypeError:
-                    agg = AgglomerativeClustering(
-                        n_clusters=k, metric="precomputed", linkage="average"
-                    )
-                labels = agg.fit_predict(D)
-                if len(set(labels)) < 2:
-                    continue
-                score = silhouette_score(D, labels, metric="precomputed")
-                if score > best_score:
-                    best_score = score
-                    best_labels = labels
-                    best_k = k
-            except Exception:
-                continue
-
-    if best_labels is None:
-        best_labels = np.zeros(n, dtype=int)
-        best_k = 1
-
-    return best_labels.astype(int), int(best_k)
-
-
-# ---------- Interactive Plotly Visualizations ----------
-
-def _prim_mst_edges(sim: np.ndarray) -> List[Tuple[int, int]]:
-    """Build MST on distance (1 - similarity); return list of (i,j)"""
-    n = sim.shape[0]
-    if n <= 1:
-        return []
-    A = np.array(sim, dtype=float)
-    A[~np.isfinite(A)] = 0.0
-    A = np.clip(A, 0.0, 1.0)
-    D = 1.0 - 0.5 * (A + A.T)
-    np.fill_diagonal(D, np.inf)
-
-    in_mst = np.zeros(n, dtype=bool)
-    in_mst[0] = True
-    edges = []
-    min_edge = D[0, :].copy()
-    parent = np.zeros(n, dtype=int)
-    parent[:] = 0
-
-    for _ in range(n - 1):
-        v = np.argmin(min_edge + in_mst * np.inf)
-        if not np.isfinite(min_edge[v]):
-            break
-        edges.append((parent[v], v))
-        in_mst[v] = True
-        for u in range(n):
-            if not in_mst[u] and D[v, u] < min_edge[u]:
-                min_edge[u] = D[v, u]
-                parent[u] = v
-    return edges
-
-
-def _select_clean_edges(sim: np.ndarray, threshold: float, top_k: int = 3, add_mst: bool = True) -> List[Tuple[int, int, float]]:
-    """Select edges for a clean graph: MST + top-k strong edges per node"""
-    n = sim.shape[0]
-    A = np.array(sim, dtype=float)
-    A[~np.isfinite(A)] = 0.0
-    A = np.clip(A, 0.0, 1.0)
-
-    chosen = set()
-    
-    # Add MST edges to ensure connectivity
-    if add_mst:
-        for i, j in _prim_mst_edges(A):
-            if i != j:
-                chosen.add(tuple(sorted((i, j))))
-
-    # Add top-k strong edges per node beyond threshold
+    G = nx.Graph()
+    G.add_nodes_from(range(n))
     for i in range(n):
-        cand = [(A[i, j], j) for j in range(n) if j != i and A[i, j] >= threshold]
-        cand.sort(reverse=True)
-        for _, j in cand[:top_k]:
-            chosen.add(tuple(sorted((i, j))))
+        for j in range(i + 1, n):
+            if A[i, j] >= threshold:
+                G.add_edge(i, j, weight=float(A[i, j]))
 
-    edges = [(i, j, float(A[i, j])) for (i, j) in sorted(chosen)]
-    return edges
+    components = list(nx.connected_components(G))
+    labels = np.full(n, -1, dtype=int)
+    cluster_id = 0
+    for comp in components:
+        comp_list = list(comp)
+        if len(comp_list) >= 2:
+            for node in comp_list:
+                labels[node] = cluster_id
+            cluster_id += 1
 
-
-def _convex_hull_shape(xs: np.ndarray, ys: np.ndarray, color: str, opacity: float = 0.15) -> Optional[dict]:
-    """Create convex hull shape for cluster visualization"""
-    if not _HAS_HULL:
-        return None
-    pts = np.c_[xs, ys]
-    if pts.shape[0] < 3:
-        return None
-    try:
-        hull = ConvexHull(pts)
-        verts = pts[hull.vertices]
-        # Add padding to hull
-        center = verts.mean(axis=0)
-        verts = center + 1.15 * (verts - center)
-        path = "M " + " L ".join(f"{x},{y}" for x, y in verts) + " Z"
-        return dict(
-            type="path",
-            path=path,
-            fillcolor=color,
-            line=dict(color=color, width=2),
-            opacity=opacity,
-            layer="below",
-        )
-    except Exception:
-        return None
+    return labels.astype(int), int(cluster_id)
 
 
-def create_interactive_similarity_graph(
-    sim: np.ndarray, 
-    labels: List[str], 
-    clusters: np.ndarray, 
-    threshold: float, 
-    out_html: str, 
-    top_k_edges: int = 3,
-    layout_method: str = "spectral"
+def _collision_avoidance(xs: np.ndarray, ys: np.ndarray, min_dist: float = 30.0, passes: int = 200) -> Tuple[np.ndarray, np.ndarray]:
+    n = len(xs)
+    for _ in range(passes):
+        moved = False
+        for a in range(n):
+            for b in range(a + 1, n):
+                dx = xs[a] - xs[b]
+                dy = ys[a] - ys[b]
+                dist = math.hypot(dx, dy)
+                if dist < min_dist and dist > 1e-6:
+                    push = (min_dist - dist) / 2.0
+                    ux = dx / dist
+                    uy = dy / dist
+                    xs[a] += ux * push
+                    ys[a] += uy * push
+                    xs[b] -= ux * push
+                    ys[b] -= uy * push
+                    moved = True
+        if not moved:
+            break
+    return xs, ys
+
+
+def _edge_color_for_similarity(s: float) -> str:
+    """
+    Color buckets:
+    - Red: Highly similar (0.70–1.00) → possible copying
+    - Orange: Moderately similar (0.50–0.70)
+    """
+    if s >= 0.70:
+        return '#ef4444'  # red
+    if s >= 0.50:
+        return '#f59e0b'  # orange
+    # No color returned for low similarity; we won't draw those edges.
+    return ''
+
+
+def create_document_similarity_network(
+    sim: np.ndarray,
+    labels: List[str],
+    threshold: float,
+    out_html: str,
 ):
     """
-    Create a beautiful, interactive similarity graph using Plotly.
-    Shows clusters with hulls, clean edges, and rich hover information.
+    Document Similarity Graph (Network View)
+
+    - Nodes: circular, labeled with document name. Size optionally encodes degree.
+    - Edge length inversely proportional to similarity using spring_layout:
+        desired_length_ij ≈ 1 / max(sim_ij, 1e-6)
+      We set layout k ≈ median(desired_length) and weight = similarity to pull close pairs together.
+    - Edge colors: red (0.70–1.00), orange (0.50–0.70). Low or no similarity edges are not drawn.
+    - Edge width constant; proximity encodes similarity.
+    - Hover node: high-similarity neighbors (≥ threshold) and all scores.
+    - Hover edge: "A–B: 0.82".
+    - Edges ≥ threshold get a red glow underlay.
+    - Zoom/pan enabled; suitable for dashboards.
     """
     if not _HAS_PLOTLY:
         print("[plotly] Not installed. Install with: pip install plotly")
         return
-    
+
     n = sim.shape[0]
     if n == 0:
         return
 
-    # Compute 2D layout
-    coords = layout_2d_from_similarity(sim, method=layout_method)
-    xs, ys = coords[:, 0], coords[:, 1]
+    # Normalize and symmetrize
+    S = np.array(sim, dtype=float)
+    S[~np.isfinite(S)] = 0.0
+    S = np.clip(S, 0.0, 1.0)
+    S = 0.5 * (S + S.T)
+    np.fill_diagonal(S, 0.0)
+
     names = [os.path.basename(x) for x in labels]
 
-    # Normalize coordinates for better visualization (NumPy 2.0 compatible)
-    x_range = np.ptp(xs) if np.ptp(xs) > 0 else 1.0
-    y_range = np.ptp(ys) if np.ptp(ys) > 0 else 1.0
-    xs = (xs - xs.min()) / max(1e-8, x_range)
-    ys = (ys - ys.min()) / max(1e-8, y_range)
-    
-    # Scale to reasonable range
-    xs = xs * 100
-    ys = ys * 100
+    # Spring layout graph: include all pairs but weight by similarity
+    G = nx.Graph()
+    G.add_nodes_from(range(n))
+    desired_lengths: List[float] = []
+    for i in range(n):
+        for j in range(i + 1, n):
+            s = float(S[i, j])
+            G.add_edge(i, j, weight=max(s, 1e-6))
+            desired_lengths.append(1.0 / max(s, 1e-6))
 
-    # Select clean edges
-    edges = _select_clean_edges(sim, threshold=threshold, top_k=top_k_edges, add_mst=True)
+    # Layout with k ~ median desired length
+    if G.number_of_edges() > 0:
+        k_val = float(np.median(desired_lengths)) if desired_lengths else 1.0
+        pos = nx.spring_layout(G, weight='weight', k=k_val, seed=42, iterations=250)
+        xs = np.array([pos[i][0] for i in range(n)], dtype=float)
+        ys = np.array([pos[i][1] for i in range(n)], dtype=float)
+    else:
+        coords = layout_2d_from_similarity(S, method="pca")
+        xs, ys = coords[:, 0], coords[:, 1]
 
-    # Cluster info
-    cluster_ids = clusters.astype(int)
-    num_clusters = int(cluster_ids.max() + 1) if cluster_ids.size else 1
-    
-    # Enhanced color palette
-    colors_palette = [
-        '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
-        '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf',
-        '#aec7e8', '#ffbb78', '#98df8a', '#ff9896', '#c5b0d5',
-        '#c49c94', '#f7b6d2', '#c7c7c7', '#dbdb8d', '#9edae5'
-    ]
-    node_colors = [colors_palette[c % len(colors_palette)] for c in cluster_ids]
+    # Normalize and avoid collisions
+    xs = (xs - xs.mean()) / max(xs.std(), 1e-6) * 320.0
+    ys = (ys - ys.mean()) / max(ys.std(), 1e-6) * 320.0
+    xs, ys = _collision_avoidance(xs, ys, min_dist=34.0, passes=240)
 
-    # Compute node metrics
-    A = np.array(sim, dtype=float)
-    A[~np.isfinite(A)] = 0.0
-    deg = (A >= threshold).sum(axis=1) - 1
-    deg = np.clip(deg, 0, None)
+    # Degree above threshold (number of connections with sim ≥ threshold)
+    deg = np.zeros(n, dtype=int)
+    for i in range(n):
+        for j in range(n):
+            if i != j and S[i, j] >= threshold:
+                deg[i] += 1
 
-    # Create figure
+    # Node hover: high-similarity names and all scores
+    node_hover = []
+    for i in range(n):
+        high = [(names[j], S[i, j]) for j in range(n) if j != i and S[i, j] >= threshold]
+        high.sort(key=lambda x: x[1], reverse=True)
+        high_html = "<br>".join([f"{nm}: {sc:.3f}" for nm, sc in high]) if high else "None"
+
+        all_scores = [(names[j], S[i, j]) for j in range(n) if j != i]
+        all_scores.sort(key=lambda x: x[1], reverse=True)
+        all_html = "<br>".join([f"{nm}: {sc:.3f}" for nm, sc in all_scores])
+
+        node_hover.append(
+            f"<b>{names[i]}</b><br>"
+            f"Connections ≥ {threshold:.2f}: {deg[i]}<br><br>"
+            f"<b>High similarity (≥ {threshold:.2f}):</b><br>{high_html}<br><br>"
+            f"<b>All similarity scores:</b><br>{all_html}"
+        )
+
+    # Build edge traces: only draw edges for s ≥ 0.50 (orange) or s ≥ 0.70 (red)
+    edge_x_red, edge_y_red, edge_text_red = [], [], []
+    edge_x_orange, edge_y_orange, edge_text_orange = [], [], []
+    glow_x, glow_y = [], []
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            s = float(S[i, j])
+            if s < 0.50:
+                continue  # do not draw low or no similarity edges
+            color = _edge_color_for_similarity(s)
+            text = f"{names[i]}–{names[j]}: {s:.3f}"
+            if color == '#ef4444':
+                edge_x_red.extend([xs[i], xs[j], None])
+                edge_y_red.extend([ys[i], ys[j], None])
+                edge_text_red.append(text)
+            elif color == '#f59e0b':
+                edge_x_orange.extend([xs[i], xs[j], None])
+                edge_y_orange.extend([ys[i], ys[j], None])
+                edge_text_orange.append(text)
+
+            if s >= threshold:
+                glow_x.extend([xs[i], xs[j], None])
+                glow_y.extend([ys[i], ys[j], None])
+
     fig = go.Figure()
 
-    # Add cluster hulls
-    if _HAS_HULL and num_clusters > 1:
-        shapes = []
-        for c in range(num_clusters):
-            mask = (cluster_ids == c)
-            if mask.sum() >= 3:
-                col = colors_palette[c % len(colors_palette)]
-                shape = _convex_hull_shape(xs[mask], ys[mask], col, opacity=0.15)
-                if shape:
-                    shapes.append(shape)
-        if shapes:
-            fig.update_layout(shapes=shapes)
-
-    # Add edges with varying opacity based on similarity
-    for i, j, w in edges:
-        # Normalize similarity for visual styling (handle edges below threshold from MST)
-        w_normalized = max(0.0, min(1.0, w))  # Ensure w is in [0, 1]
-        
-        # Calculate alpha and width based on normalized similarity
-        if w >= threshold:
-            # Above threshold: scale between threshold and 1.0
-            t = (w - threshold) / max(0.01, 1.0 - threshold)
-            alpha = 0.3 + 0.5 * t
-            width = 1.0 + 2.5 * t
-        else:
-            # Below threshold (MST edges): use minimum styling
-            alpha = 0.15
-            width = 0.5
-        
-        alpha = float(np.clip(alpha, 0.1, 0.9))
-        width = float(np.clip(width, 0.3, 5.0))
-        
-        edge_trace = go.Scatter(
-            x=[xs[i], xs[j], None],
-            y=[ys[i], ys[j], None],
-            mode='lines',
-            line=dict(
-                color=f'rgba(150, 150, 180, {alpha})',
-                width=width
-            ),
-            hoverinfo='text',
-            text=f'{names[i]} ↔ {names[j]}<br>Similarity: {w:.3f}',
-            showlegend=False,
-            name='edge'
-        )
-        fig.add_trace(edge_trace)
-
-    # Prepare hover text with rich information
-    hover_texts = []
-    for i in range(n):
-        # Get top similar documents
-        similarities = [(A[i, j], names[j]) for j in range(n) if j != i]
-        similarities.sort(reverse=True)
-        top_similar = similarities[:5]
-        
-        similar_text = '<br>'.join([f'  • {nm}: {sim_val:.3f}' for sim_val, nm in top_similar])
-        
-        hover_text = (
-            f"<b>{names[i]}</b><br>"
-            f"<b>Cluster:</b> {int(cluster_ids[i])}<br>"
-            f"<b>Connections (≥{threshold}):</b> {int(deg[i])}<br>"
-            f"<br><b>Top Similar Documents:</b><br>{similar_text}"
-        )
-        hover_texts.append(hover_text)
-
-    # Add nodes with size based on degree
-    node_sizes = 12 + 8 * np.sqrt(deg)
-    
-    node_trace = go.Scatter(
-        x=xs,
-        y=ys,
-        mode='markers+text',
-        marker=dict(
-            size=node_sizes,
-            color=node_colors,
-            line=dict(color='white', width=2),
-            opacity=0.9
-        ),
-        text=names,
-        textposition="top center",
-        textfont=dict(size=9, color='white'),
-        hovertext=hover_texts,
-        hoverinfo='text',
-        showlegend=False,
-        name='documents'
-    )
-    fig.add_trace(node_trace)
-
-    # Add legend for clusters
-    for c in range(num_clusters):
-        cluster_size = (cluster_ids == c).sum()
+    # Red glow for edges above threshold
+    if glow_x:
         fig.add_trace(go.Scatter(
-            x=[None],
-            y=[None],
-            mode='markers',
-            marker=dict(
-                size=12,
-                color=colors_palette[c % len(colors_palette)],
-                line=dict(color='white', width=2)
-            ),
-            name=f'Cluster {c} ({cluster_size} docs)',
-            showlegend=True
+            x=glow_x, y=glow_y, mode='lines',
+            line=dict(width=16, color='rgba(239,68,68,0.20)'),
+            hoverinfo='skip',
+            showlegend=False
         ))
 
-    # Update layout with professional styling
+    # Bucket traces (no grey bucket)
+    if edge_x_red:
+        fig.add_trace(go.Scatter(
+            x=edge_x_red, y=edge_y_red, mode='lines',
+            line=dict(width=2.0, color='#ef4444'),
+            hoverinfo='text', text=edge_text_red, name='High (0.70–1.00)'
+        ))
+    if edge_x_orange:
+        fig.add_trace(go.Scatter(
+            x=edge_x_orange, y=edge_y_orange, mode='lines',
+            line=dict(width=2.0, color='#f59e0b'),
+            hoverinfo='text', text=edge_text_orange, name='Moderate (0.50–0.70)'
+        ))
+
+    # Nodes: circular, show doc name and optionally degree ≥ threshold
+    node_labels = [f"{names[i]} ({deg[i]})" if deg[i] > 0 else f"{names[i]}" for i in range(n)]
+    fig.add_trace(go.Scatter(
+        x=xs, y=ys,
+        mode='markers+text',
+        marker=dict(
+            size=[16 + 6 * math.sqrt(max(0, d)) for d in deg],
+            color='#3b82f6',
+            line=dict(color='white', width=2),
+            symbol='circle',
+            opacity=0.95
+        ),
+        text=node_labels,
+        textposition="bottom center",
+        textfont=dict(size=12, color='white'),
+        hovertext=node_hover,
+        hoverinfo='text',
+        name='Documents'
+    ))
+
     fig.update_layout(
         title=dict(
-            text=f'📊 Document Similarity Network<br><sub>Threshold: {threshold:.2f} | Clusters: {num_clusters} | Documents: {n}</sub>',
-            x=0.5,
-            xanchor='center',
-            font=dict(size=20, color='#e8eaf6')
+            text=f"Document Similarity Network<br>"
+                 f"<sub>Distance encodes similarity (shorter = more similar). Red glow for edges ≥ {threshold:.2f}.</sub>",
+            x=0.5, xanchor='center', font=dict(size=20, color='#e8eaf6')
         ),
         template='plotly_dark',
-        plot_bgcolor='#0a0e27',
-        paper_bgcolor='#0a0e27',
-        width=1400,
-        height=900,
-        xaxis=dict(
-            visible=False,
-            range=[xs.min() - 5, xs.max() + 5]
-        ),
-        yaxis=dict(
-            visible=False,
-            range=[ys.min() - 5, ys.max() + 5]
-        ),
+        plot_bgcolor='#0a0e27', paper_bgcolor='#0a0e27',
+        width=1600, height=1000,
+        xaxis=dict(visible=False),
+        yaxis=dict(visible=False),
         hovermode='closest',
         showlegend=True,
         legend=dict(
-            title=dict(text='<b>Clusters</b>', font=dict(size=14)),
-            bgcolor='rgba(20, 25, 45, 0.8)',
-            bordercolor='#3f51b5',
-            borderwidth=2,
-            font=dict(size=11)
+            title=dict(text='<b>Edge similarity buckets</b>', font=dict(size=13)),
+            bgcolor='rgba(20, 25, 45, 0.92)',
+            bordercolor='#3f51b5', borderwidth=2, font=dict(size=11),
+            x=1.02, y=1, xanchor='left', yanchor='top'
         ),
-        margin=dict(l=20, r=20, t=80, b=20),
+        margin=dict(l=20, r=280, t=100, b=20),
+        annotations=[
+            dict(
+                text="Scroll to zoom, drag to pan. Click legend to focus/show/hide buckets.",
+                showarrow=False, xref="paper", yref="paper", x=0.02, y=0.98,
+                xanchor='left', yanchor='top', font=dict(size=12, color='#9fa8da')
+            )
+        ]
     )
 
-    # Add annotations
-    fig.add_annotation(
-        text=f"💡 Hover over nodes for details | Click legend to toggle clusters",
-        xref="paper", yref="paper",
-        x=0.5, y=-0.02,
-        showarrow=False,
-        font=dict(size=11, color='#9fa8da'),
-        xanchor='center'
-    )
-
-    # Save to HTML
     fig.write_html(
         out_html,
         config={
             'displayModeBar': True,
             'displaylogo': False,
             'modeBarButtonsToRemove': ['pan2d', 'lasso2d', 'select2d'],
-            'toImageButtonOptions': {
-                'format': 'png',
-                'filename': 'similarity_graph',
-                'height': 1200,
-                'width': 1600,
-                'scale': 2
-            }
+            'toImageButtonOptions': {'format': 'png', 'filename': 'doc_similarity_network', 'height': 1400, 'width': 2000, 'scale': 2}
         },
         include_plotlyjs='cdn'
     )
-    print(f"✅ Interactive similarity graph saved: {out_html}")
+    print(f"✅ Network map saved: {out_html}")
+
+
+# Compatibility wrapper for main.py
+def create_interactive_similarity_graph(
+    sim: np.ndarray,
+    labels: List[str],
+    clusters: np.ndarray,
+    threshold: float,
+    out_html: str,
+    top_k_edges: int = 3,
+    layout_method: str = "spring"
+):
+    return create_document_similarity_network(
+        sim=sim,
+        labels=labels,
+        threshold=threshold,
+        out_html=out_html,
+    )
 
 
 def create_interactive_heatmap(matrix: np.ndarray, labels: List[str], title: str, out_html: str):
-    """Create interactive heatmap with Plotly"""
     if not _HAS_PLOTLY:
         print("[plotly] Not installed. Skipping interactive heatmap:", title)
         return
-    
+
     z = np.array(matrix, dtype=float)
     z[~np.isfinite(z)] = np.nan
     z = np.clip(z, 0.0, 1.0)
-    
-    # Upper triangle mask
+
     n = z.shape[0]
     mask = np.triu(np.ones_like(z, dtype=bool), k=1)
     z_plot = np.where(mask, z, np.nan)
-    
+
     labels_short = [os.path.basename(x) for x in labels]
-    
+
     fig = px.imshow(
         z_plot,
         x=labels_short,
         y=labels_short,
         color_continuous_scale='Viridis',
-        zmin=0.0, 
+        zmin=0.0,
         zmax=1.0,
         title=title,
         origin='upper',
         aspect='equal',
     )
-    
+
     fig.update_layout(
         template='plotly_dark',
         width=min(1600, max(800, 50 * n)),
         height=min(1600, max(800, 50 * n)),
         margin=dict(l=80, r=40, t=80, b=80),
-        coloraxis_colorbar=dict(
-            title="Similarity",
-            tickformat='.2f'
-        ),
+        coloraxis_colorbar=dict(title="Similarity", tickformat='.2f'),
         plot_bgcolor='#0a0e27',
         paper_bgcolor='#0a0e27',
     )
-    
+
     fig.update_xaxes(tickangle=45, tickfont=dict(size=10))
     fig.update_yaxes(tickfont=dict(size=10))
-    
+
     fig.write_html(out_html, include_plotlyjs='cdn')
     print(f"✅ Interactive heatmap saved: {out_html}")
 
@@ -571,10 +447,10 @@ def main():
     parser.add_argument("--no-semantic", action="store_true",
                         help="Disable semantic scoring (skip sentence-transformers).")
     parser.add_argument("--no-interactive", action="store_true", help="Disable interactive HTML plots.")
-    parser.add_argument("--layout", default="spectral", choices=["spectral", "tsne", "pca"],
-                        help="Layout algorithm for similarity graph (default: spectral).")
+    parser.add_argument("--layout", default="spring", choices=["spring", "kamada_kawai", "spectral", "tsne", "pca"],
+                        help="Layout algorithm for similarity graph (default: spring).")
     parser.add_argument("--top-k", type=int, default=3,
-                        help="Number of top edges per node to display (default: 3).")
+                        help="Reserved (not used in this view).")
     args = parser.parse_args()
 
     uploads_dir = args.uploads
@@ -588,19 +464,14 @@ def main():
 
     print(f"📁 Processing {len(files)} documents...")
 
-    # Per-doc caches
-    doc_text: Dict[str, str] = {}
     doc_sents: Dict[str, List[str]] = {}
     doc_sem_emb: Dict[str, Optional[np.ndarray]] = {}
     doc_style_feat: Dict[str, Optional[np.ndarray]] = {}
 
-    # Prepare docs
     for fp in files:
         txt = read_file(fp)
-        doc_text[fp] = txt
         sents = lex_sent_tokenize(txt)
         doc_sents[fp] = sents
-
         try:
             feats, _names = stylometric_features(txt)
             doc_style_feat[fp] = feats
@@ -608,7 +479,6 @@ def main():
             print(f"⚠️  [stylometric] {os.path.basename(fp)}: {e}")
             doc_style_feat[fp] = None
 
-    # Semantic embeddings
     semantic_enabled = not args.no_semantic
     if semantic_enabled:
         print("🔍 Computing semantic embeddings...")
@@ -629,26 +499,23 @@ def main():
     n = len(files)
     names = [os.path.basename(p) for p in files]
 
-    # Initialize matrices
     M_lex = np.full((n, n), np.nan, dtype=float)
     M_sem = np.full((n, n), np.nan, dtype=float)
     M_sty = np.full((n, n), np.nan, dtype=float)
     M_cmb = np.full((n, n), np.nan, dtype=float)
 
     print("⚙️  Computing pairwise similarities...")
-    # Pairwise scoring
     for i in range(n):
         M_lex[i, i] = 1.0
         M_sem[i, i] = 1.0
         M_sty[i, i] = 1.0
-        
         for j in range(i + 1, n):
-            A, B = files[i], files[j]
+            A_fp, B_fp = files[i], files[j]
 
             # Lexical
             lex_score: Optional[float] = None
             try:
-                _, lex_score = lex_pair_sim(doc_sents[A], doc_sents[B])
+                _, lex_score = lex_pair_sim(doc_sents[A_fp], doc_sents[B_fp])
                 if lex_score is not None:
                     M_lex[i, j] = M_lex[j, i] = float(lex_score)
             except Exception as e:
@@ -656,9 +523,9 @@ def main():
 
             # Semantic
             sem_score: Optional[float] = None
-            if semantic_enabled and doc_sem_emb.get(A) is not None and doc_sem_emb.get(B) is not None:
+            if semantic_enabled and doc_sem_emb.get(A_fp) is not None and doc_sem_emb.get(B_fp) is not None:
                 try:
-                    sim_sem = doc_sem_emb[A] @ doc_sem_emb[B].T
+                    sim_sem = doc_sem_emb[A_fp] @ doc_sem_emb[B_fp].T
                     sem_score = safe_mean_max_score(sim_sem)
                     if sem_score is not None:
                         M_sem[i, j] = M_sem[j, i] = float(sem_score)
@@ -667,9 +534,9 @@ def main():
 
             # Stylometric
             sty_score: Optional[float] = None
-            if doc_style_feat[A] is not None and doc_style_feat[B] is not None:
+            if doc_style_feat[A_fp] is not None and doc_style_feat[B_fp] is not None:
                 try:
-                    metrics = compare_stylometry(doc_style_feat[A], doc_style_feat[B])
+                    metrics = compare_stylometry(doc_style_feat[A_fp], doc_style_feat[B_fp])
                     sty_score = float(metrics.get("copying_likelihood", 0.0))
                     if sty_score is not None:
                         M_sty[i, j] = M_sty[j, i] = float(sty_score)
@@ -689,7 +556,7 @@ def main():
                 else "suspect" if combined >= (args.threshold - 0.1)
                 else "distinct"
             )
-            
+
             results.append({
                 "file_a": names[i],
                 "file_b": names[j],
@@ -698,8 +565,8 @@ def main():
                 "stylometric": None if sty_score is None else round(sty_score, 4),
                 "combined": round(combined, 4),
                 "decision": decision,
-                "len_sent_a": len(doc_sents[A]),
-                "len_sent_b": len(doc_sents[B]),
+                "len_sent_a": len(doc_sents[A_fp]),
+                "len_sent_b": len(doc_sents[B_fp]),
             })
 
     np.fill_diagonal(M_cmb, 1.0)
@@ -707,7 +574,7 @@ def main():
     # Save CSV/JSON
     csv_path = os.path.join(outdir, "pair_scores.csv")
     json_path = os.path.join(outdir, "pair_scores.json")
-    
+
     fieldnames = ["file_a", "file_b", "lexical", "semantic", "stylometric", "combined", "decision", "len_sent_a", "len_sent_b"]
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -718,12 +585,11 @@ def main():
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
-    # Summary
     flagged = [r for r in results if r["decision"] == "copied"]
     print(f"\n📊 Results Summary:")
     print(f"   Total pairs: {len(results)}")
     print(f"   Flagged as copied: {len(flagged)} (threshold={args.threshold})")
-    
+
     top = sorted(results, key=lambda r: r["combined"], reverse=True)[:5]
     print(f"\n🔝 Top 5 similar pairs:")
     for r in top:
@@ -733,36 +599,32 @@ def main():
     print(f"\n💾 Saved: {csv_path}")
     print(f"💾 Saved: {json_path}")
 
-    # Interactive visualizations
     if not args.no_interactive:
-        if not _HAS_PLOTLY:
-            print("\n⚠️  plotly not installed. Install with: pip install plotly")
-        else:
-            print("\n🎨 Creating interactive visualizations...")
-            
-            # Heatmaps
-            create_interactive_heatmap(M_lex, files, "Lexical Similarity (Upper Triangle)", 
-                                     os.path.join(outdir, "heatmap_lexical.html"))
-            if np.isfinite(M_sem).any():
-                create_interactive_heatmap(M_sem, files, "Semantic Similarity (Upper Triangle)", 
-                                         os.path.join(outdir, "heatmap_semantic.html"))
-            create_interactive_heatmap(M_sty, files, "Stylometric Similarity (Upper Triangle)", 
-                                     os.path.join(outdir, "heatmap_stylometric.html"))
-            create_interactive_heatmap(M_cmb, files, "Combined Similarity (Upper Triangle)", 
-                                     os.path.join(outdir, "heatmap_combined.html"))
+        print("\nℹ️ Interactive plots disabled.")
+        return
 
-            # Clustering
-            clusters, k = cluster_from_similarity(M_cmb, k_min=2, k_max=min(10, n-1))
-            print(f"🎯 Detected {k} clusters")
+    if not _HAS_PLOTLY:
+        print("\n⚠️  plotly not installed. Install with: pip install plotly")
+        return
 
-            # Similarity graph
-            create_interactive_similarity_graph(
-                M_cmb, files, clusters, 
-                threshold=args.threshold,
-                out_html=os.path.join(outdir, "similarity_graph.html"),
-                top_k_edges=args.top_k,
-                layout_method=args.layout
-            )
+    print("\n🎨 Creating interactive visualizations...")
+    if np.isfinite(M_lex).any():
+        create_interactive_heatmap(M_lex, files, "Lexical Similarity (Upper Triangle)",
+                                   os.path.join(outdir, "heatmap_lexical.html"))
+    if np.isfinite(M_sem).any():
+        create_interactive_heatmap(M_sem, files, "Semantic Similarity (Upper Triangle)",
+                                   os.path.join(outdir, "heatmap_semantic.html"))
+    if np.isfinite(M_sty).any():
+        create_interactive_heatmap(M_sty, files, "Stylometric Similarity (Upper Triangle)",
+                                   os.path.join(outdir, "heatmap_stylometric.html"))
+    create_interactive_heatmap(M_cmb, files, "Combined Similarity (Upper Triangle)",
+                               os.path.join(outdir, "heatmap_combined.html"))
+
+    create_document_similarity_network(
+        M_cmb, files,
+        threshold=args.threshold,
+        out_html=os.path.join(outdir, "network_similarity.html"),
+    )
 
     print("\n✨ Done!")
 
