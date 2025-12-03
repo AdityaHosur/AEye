@@ -1,0 +1,3 @@
+The computer behaves as a clocked state machine following rules encoded in logic and sometimes microcode. Instructions and data reside in memory; the processor fetches, interprets fields, and issues work to functional units to transform state. Concurrency arises across cores and threads, coordinated by synchronization primitives and coherence protocols.
+
+System software multiplexes CPUs, isolates address spaces, and exposes devices via drivers. Virtualization layers rely on hardware support to host guests with strong separation. Toolchains and loaders produce and arrange binaries for execution. Together, these layers render algorithms as disciplined, observable state transitions under policies that ensure correctness and performance.

@@ -1,0 +1,3 @@
+Data arrives from peripherals and is represented as discrete symbols in memory. The processor consults the program counter, fetches the next instruction, decodes its meaning, and drives execution units to compute results, while caches keep frequently accessed information nearby.
+
+The operating system coordinates this activity through scheduling, memory protection, and driver interfaces. File systems provide durable organization for storage, and network stacks packetize and secure communications. Hardware timers and interrupts connect software to external events. The machine thus behaves like a controlled pipeline from symbolic inputs to outputs with protections for correctness and performance.

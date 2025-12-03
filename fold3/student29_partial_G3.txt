@@ -1,0 +1,3 @@
+The processor retrieves instructions, decodes opcodes and operands, and performs arithmetic or logic operations before writing results back. Pipelines and vector units widen throughput, while caches reduce average access time by exploiting locality across levels of memory.
+
+Applications rely on operating systems for scheduling, isolation, and interfaces to files, devices, and networks. GPUs offload parallel workloads and peripherals digitize inputs through sampling. File systems manage names, metadata, and blocks with durability guarantees. Networking protocols route and transport packets end-to-end. The result is a system that turns abstract algorithms into repeatable electrical sequences with dependable performance.

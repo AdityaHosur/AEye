@@ -1,0 +1,3 @@
+The CPU advances an instruction stream by fetching, decoding, and issuing operations to arithmetic and vector units, while cache hierarchies keep hot data close to minimize access time. Power and thermal controllers adapt frequency and voltage to meet efficiency goals.
+
+System software then imposes structure: an operating system schedules tasks and isolates memory, drivers unify device access, and file systems maintain durable state. Network stacks segment and secure communications, and interrupts tie computation to real-time events. These mechanisms convert symbolic inputs into reliable outputs under varying workloads.

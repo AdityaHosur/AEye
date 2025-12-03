@@ -1,0 +1,3 @@
+The stored-program model places instructions and data in memory and lets the processor fetch, interpret fields, and drive execution units to alter state. Multiple cores and threads provide concurrency, while memory models determine which re-orderings are visible and coherence ensures shared values converge.
+
+System software layers provide isolation and structure. Operating systems schedule tasks and manage virtual memory; hypervisors extend isolation to entire guests with hardware support. Controllers handle I/O using interrupts and DMA, and toolchains compile and link programs into binaries. The machine thus realizes algorithms as sequences of controlled state transitions, governed by local determinism and global policies.

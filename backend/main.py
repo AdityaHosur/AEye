@@ -6,6 +6,7 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+from sklearn.metrics import precision_recall_fscore_support, roc_auc_score, average_precision_score
 import uvicorn
 import numpy as np
 import json
@@ -528,9 +529,9 @@ async def compare_pair_detailed(request: ComparePairRequest):
         top_words=20
     )
 
-    if cmb is None or cmb < 0.6:
+    if cmb is None or cmb < 0.4:
         verdict, confidence = "distinct", "high"
-    elif cmb < 0.7:
+    elif cmb < 0.6:
         verdict, confidence = "suspect", "medium"
     else:
         verdict, confidence = "copied", "high" if cmb >= 0.85 else "medium"
@@ -551,6 +552,159 @@ async def compare_pair_detailed(request: ComparePairRequest):
             "html_b": f'<div class="doc-highlight">{html_b}</div>',
             "meta": meta
         }
+    }
+
+def _parse_group(filename: str) -> Optional[str]:
+    m = re.search(r"_G([A-Za-z0-9]+)\.txt$", filename)
+    if not m:
+        return None
+    g = m.group(1)  # '5' or '0' or 'G5' depending on pattern
+    # Normalize to 'G<id>' strictly
+    if g.startswith("G"):
+        return g.upper()
+    return f"G{g}"
+
+def _is_positive_pair(fname_a: str, fname_b: str) -> int:
+    """
+    Positive if both files belong to the same non-G0 group (e.g., G1..G5).
+    Negative otherwise (different groups, any G0, or missing group).
+    """
+    ga = _parse_group(fname_a)
+    gb = _parse_group(fname_b)
+    if ga is None or gb is None:
+        return 0
+    if ga == "G0" or gb == "G0":
+        return 0
+    return int(ga == gb)
+
+def _build_truth_and_scores(results: List[Dict[str, Any]]) -> Tuple[List[int], List[float]]:
+    """
+    Build classification ground truth and associated scores from pair_scores.json entries.
+    """
+    y_true, y_score = [], []
+    for r in results:
+        label = _is_positive_pair(r["file_a"], r["file_b"])
+        y_true.append(label)
+        y_score.append(float(r["combined"]))
+    return y_true, y_score
+
+def _ranking_lists(results: List[Dict[str, Any]]) -> Dict[str, List[Tuple[str, float, int]]]:
+    """
+    Build per-anchor rankings with relevance from normalized group labels.
+    Relevance = 1 if same non-G0 group, else 0.
+    """
+    # Cache groups for all files in results
+    groups: Dict[str, Optional[str]] = {}
+    for r in results:
+        if r["file_a"] not in groups:
+            groups[r["file_a"]] = _parse_group(r["file_a"])
+        if r["file_b"] not in groups:
+            groups[r["file_b"]] = _parse_group(r["file_b"])
+
+    # Accumulate best score per neighbor (ensure symmetry)
+    by_a: Dict[str, Dict[str, float]] = {}
+    for r in results:
+        a, b, s = r["file_a"], r["file_b"], float(r["combined"])
+        by_a.setdefault(a, {})
+        by_a.setdefault(b, {})
+        by_a[a][b] = max(s, by_a[a].get(b, -1.0))
+        by_a[b][a] = max(s, by_a[b].get(a, -1.0))
+    # Build ranked lists with relevance labels
+    ranked: Dict[str, List[Tuple[str, float, int]]] = {}
+    for a, nbrs in by_a.items():
+        ga = groups.get(a)
+        lst: List[Tuple[str, float, int]] = []
+        for b, s in nbrs.items():
+            gb = groups.get(b)
+            rel = 0
+            if ga is not None and gb is not None and ga != "G0" and gb != "G0" and ga == gb:
+                rel = 1
+            lst.append((b, s, rel))
+        lst.sort(key=lambda x: x[1], reverse=True)
+        ranked[a] = lst
+    return ranked
+
+def _map_score(ranked: Dict[str, List[Tuple[str, float, int]]]) -> float:
+    aps, cnt = 0.0, 0
+    for a, lst in ranked.items():
+        rel_total = sum(r for _, _, r in lst)
+        if rel_total == 0:
+            continue
+        hits, prec_sum = 0, 0.0
+        for i, (_, _, rel) in enumerate(lst, 1):
+            if rel:
+                hits += 1
+                prec_sum += hits / i
+        aps += (prec_sum / rel_total)
+        cnt += 1
+    return aps / cnt if cnt else 0.0
+
+def _ndcg_at_k(ranked: Dict[str, List[Tuple[str, float, int]]], k: int = 10) -> float:
+    def dcg(items):
+        s = 0.0
+        for i, rel in enumerate(items, 1):
+            s += (rel / np.log2(i + 1))
+        return s
+    scores, cnt = 0.0, 0
+    for a, lst in ranked.items():
+        rels = [rel for _, _, rel in lst[:k]]
+        if sum(rel for _, _, rel in lst) == 0:
+            continue
+        ideal = sorted([rel for _, _, rel in lst], reverse=True)[:k]
+        idcg = dcg(ideal)
+        ndcg = dcg(rels) / idcg if idcg > 0 else 0.0
+        scores += ndcg
+        cnt += 1
+    return scores / cnt if cnt else 0.0
+
+@app.get("/evaluate")
+async def evaluate(threshold: float = 0.70):
+    """
+    Evaluate detection quality using filename-derived ground truth.
+    Positive = both files share same non-G0 group (e.g., G1..G5). Negative otherwise.
+    Metrics: Precision/Recall/F1 at threshold, ROC-AUC, PR-AUC, MAP, NDCG@10.
+    """
+    scores_path = OUTPUT_DIR / "pair_scores.json"
+    if not scores_path.exists():
+        raise HTTPException(status_code=400, detail="Run /detect-similarity first to generate pair_scores.json")
+    with open(scores_path, "r", encoding="utf-8") as f:
+        results = json.load(f)
+
+    y_true, y_score = _build_truth_and_scores(results)
+    y_pred = [1 if s >= threshold else 0 for s in y_score]
+
+    # Classification metrics
+    prec, rec, f1, _ = precision_recall_fscore_support(y_true, y_pred, average="binary", zero_division=0)
+    try:
+        roc = roc_auc_score(y_true, y_score)
+    except Exception:
+        roc = None
+    try:
+        pr_auc = average_precision_score(y_true, y_score)
+    except Exception:
+        pr_auc = None
+    
+    # Ranking metrics
+    ranked = _ranking_lists(results)
+    m_map = _map_score(ranked)
+    ndcg10 = _ndcg_at_k(ranked, k=10)
+
+    # Confusion
+    tp = sum(1 for t, p in zip(y_true, y_pred) if t == 1 and p == 1)
+    tn = sum(1 for t, p in zip(y_true, y_pred) if t == 0 and p == 0)
+    fp = sum(1 for t, p in zip(y_true, y_pred) if t == 0 and p == 1)
+    fn = sum(1 for t, p in zip(y_true, y_pred) if t == 1 and p == 0)
+    print(f"[eval] pairs={len(y_true)} pos={int(sum(y_true))} neg={int(len(y_true)-sum(y_true))}")
+    return {
+        "threshold": threshold,
+        "counts": {"pairs": len(y_true), "positives": int(sum(y_true)), "negatives": int(len(y_true) - sum(y_true))},
+        "classification": {
+            "precision": round(prec, 4), "recall": round(rec, 4), "f1": round(f1, 4),
+            "roc_auc": None if roc is None else round(roc, 4),
+            "pr_auc": None if pr_auc is None else round(pr_auc, 4),
+            "confusion": {"tp": tp, "fp": fp, "tn": tn, "fn": fn}
+        },
+        "ranking": {"MAP": round(m_map, 4), "NDCG@10": round(ndcg10, 4)}
     }
 
 

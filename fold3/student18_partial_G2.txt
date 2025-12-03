@@ -1,0 +1,4 @@
+
+A computer executes a stream of instructions through a front end that fetches, predicts, and decodes, while execution units process arithmetic and vector operations and retire results in order. Cache hierarchies reduce latency by exploiting locality, and coherence maintains a consistent view of memory across cores.
+
+The remainder of the system shapes efficiency and reliability. Operating systems schedule tasks, map virtual addresses, and service interrupts. Controllers for storage and networking are abstracted by drivers, and DMA moves large buffers without monopolizing the CPU. Toolchains convert high-level code into optimized instruction sequences. With isolation, privilege modes, and cryptographic acceleration, security properties are upheld. In sum, the computer turns program structure into coordinated electrical work, balancing throughput, responsiveness, and correctness.

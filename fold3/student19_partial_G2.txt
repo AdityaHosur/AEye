@@ -1,0 +1,4 @@
+
+Instruction streams pass through fetch, prediction, and decode before execution units perform arithmetic and logic, with results retiring in order to preserve program semantics. Locality-aware caches reduce memory delays, and a coherent hierarchy synchronizes shared data on multicore processors.
+
+System-level services then govern execution. An operating system handles scheduling, virtual memory, and device interrupts. Drivers offer consistent interfaces for storage, graphics, and networking, and DMA reduces copy overhead. Compilers and linkers translate programs into binaries and place them in memory. Privilege levels and isolation protect the kernel and processes. Together, these layers render programs into accurate electrical activity delivered at practical performance levels.

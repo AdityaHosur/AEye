@@ -205,7 +205,7 @@ function App() {
     <div className="App">
       <header className="app-header">
         <h1>🔍 AEye - Document Similarity Detection</h1>
-        <p>Advanced plagiarism detection with OCR support for handwritten documents</p>
+        <p>Advanced Copy detection with OCR support for handwritten documents</p>
       </header>
 
       <div className="container">

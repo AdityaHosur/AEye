@@ -1,0 +1,3 @@
+Authentication verifies identity through possession or knowledge of credentials, and layered controls such as multi-factor checks, hardened storage, and contextual validation mitigate guessing and replay. Standards including WebAuthn, OAuth2/OIDC, and TLS carry proofs and identity assertions to relying systems.
+
+Authorization constrains actions through roles, attributes, and environment, enforcing least privilege and separation of duties. Fine-grained scopes, time limits, and step-up checks govern elevated risk. Auditing, monitoring, and revocation maintain accountability. Together, the two functions ensure systems first establish who is acting and then allow only behavior consistent with explicit, reviewable policy.

@@ -1,0 +1,3 @@
+A computer encodes information in bits bound into bytes and words, and the CPU cycles through fetching, decoding, and executing instructions on ALUs or vector hardware. Prediction and caching keep pipelines full, while layered memory balances latency and capacity.
+
+Operating systems schedule work, manage virtual memory, and provide system calls for storage and communication. Peripherals and GPUs handle sensing and acceleration, file systems structure persistent data, and network stacks exchange packets reliably. In aggregate, these components transform high-level programs into coordinated, deterministic electrical activity that supports both interactive and data-intensive tasks.

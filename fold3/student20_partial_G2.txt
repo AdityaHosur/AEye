@@ -1,0 +1,4 @@
+
+The front end fetches instruction bytes, predicts branches, and decodes operations into micro-ops. Pipelines and out-of-order engines overlap independent work, while caches and coherence reduce and coordinate memory access costs.
+
+On the platform side, the operating system schedules threads, manages address spaces, and services traps and interrupts. Device drivers abstract controllers, and DMA moves data at high throughput. Toolchains convert high-level code into efficient sequences executed by the processor. With privilege separation and isolation in place, the computer turns programs into reliable electrical behavior that scales from interactive applications to data-intensive workloads.

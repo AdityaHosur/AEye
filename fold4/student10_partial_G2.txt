@@ -1,0 +1,3 @@
+Authentication verifies identity via control of a credential, and defenses such as multi-factor checks, secure storage, and contextual validation resist common attacks. Protocols like mutual TLS, SAML, and OpenID Connect convey identity assertions to relying parties without exposing secrets.
+
+Authorization evaluates requests against roles, attributes, and ownership, enforcing least privilege and separation of duties. Fine-grained scopes and time limits tighten control over sensitive operations, while step-up authentication addresses elevated risk. Auditing and revocation keep access aligned with change. Together, the two functions establish who is acting and ensure their actions conform to explicit policy.

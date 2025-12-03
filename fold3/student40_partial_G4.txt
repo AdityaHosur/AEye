@@ -1,0 +1,3 @@
+Peripherals present digitized data that is placed in memory, and the processor steps through instructions by consulting the program counter, decoding operations, and dispatching work to execution units. Multilevel caches reduce observed latency by retaining active data near the cores.
+
+The operating system schedules work, manages protection and virtual memory, and provides drivers for devices. File systems journal and recover, while network stacks segment and secure communications. Timers and interrupts bring software into alignment with real-world events. The computer therefore functions as a disciplined pipeline from symbolic inputs to outputs, maintaining correctness and responsiveness.
